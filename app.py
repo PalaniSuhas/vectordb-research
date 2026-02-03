@@ -555,8 +555,8 @@ with st.sidebar:
 
 
 # Main Panel
-if mode == " Test Chatbot":
-    st.header(" Test Chatbot")
+if mode == "Test Chatbot":
+    st.header("Test Chatbot")
     
     if st.session_state.retrieval_system:
         st.success(f" Chatbot active with {st.session_state.test_llm_model}")
