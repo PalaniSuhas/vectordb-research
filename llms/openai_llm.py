@@ -1,110 +1,97 @@
-"""OpenAI LLM implementation for evaluation."""
+"""OpenAI LLM implementation for evaluation and generation."""
 from typing import List, Dict, Any
 import openai
 import json
 from utils.timer import Timer
 from utils.logger import logger
 
-
 class OpenAILLM:
-    """OpenAI GPT model for evaluation."""
+    """OpenAI GPT model for evaluation and chat."""
     
     def __init__(self, api_key: str, model: str = "gpt-4o-mini"):
         self.client = openai.OpenAI(api_key=api_key)
         self.model = model
     
+    def generate_answer(self, query: str, context: str) -> str:
+        """Generate an answer based on provided context."""
+        prompt = f"Context:\n{context}\n\nQuestion: {query}\n\nAnswer the question based only on the context provided."
+        
+        # GPT-5 models do not support temperature values other than 1
+        is_gpt5 = "gpt-5" in self.model
+        
+        try:
+            params = {
+                "model": self.model,
+                "messages": [
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": prompt}
+                ]
+            }
+            if not is_gpt5:
+                params["temperature"] = 0.7
+                
+            response = self.client.chat.completions.create(**params)
+            return response.choices[0].message.content
+        except Exception as e:
+            logger.error(f"OpenAI generation failed: {str(e)}")
+            return f"Error: {str(e)}"
+
     def evaluate_retrieval(
         self,
         query: str,
         retrieved_texts: List[str],
         retrieved_scores: List[float]
     ) -> Dict[str, Any]:
-        """Evaluate retrieval quality.
-        
-        Returns:
-            Dictionary with evaluation scores
-        """
+        """Evaluate retrieval quality."""
         timer = Timer()
         timer.start()
         
-        # Construct evaluation prompt
         context = "\n\n".join([
             f"Document {i+1} (score: {score:.3f}):\n{text}"
             for i, (text, score) in enumerate(zip(retrieved_texts, retrieved_scores))
         ])
         
         prompt = f"""You are an evaluation system that assesses retrieval quality.
-
 Query: {query}
-
 Retrieved Context:
 {context}
 
-Evaluate the retrieval based on these metrics:
-
-1. context_relevance: How relevant are the retrieved documents to the query? (0.0 to 1.0)
-2. answer_completeness: Do the documents contain enough information to answer the query? (0.0 to 1.0)
-3. faithfulness: Are the documents factually accurate and consistent? (0.0 to 1.0)
-
-CRITICAL INSTRUCTIONS:
-- Base your scores ONLY on the retrieved context provided
-- Do NOT invent facts or make assumptions
-- Return ONLY valid JSON with no additional text
-- Use decimal numbers between 0.0 and 1.0
-
-Return ONLY this JSON structure:
-{{
-  "context_relevance": <score>,
-  "answer_completeness": <score>,
-  "faithfulness": <score>,
-  "overall_quality": <average of above three scores>
-}}"""
+Evaluate based on: context_relevance, answer_completeness, faithfulness (0.0 to 1.0).
+Return ONLY JSON.
+"""
+        is_gpt5 = "gpt-5" in self.model
         
         try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": "You are a strict evaluation system. Return only JSON."},
+            params = {
+                "model": self.model,
+                "messages": [
+                    {"role": "system", "content": "Return only valid JSON."},
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.0,
-                response_format={"type": "json_object"}
-            )
+                "response_format": {"type": "json_object"}
+            }
+            
+            # GPT-5 family logic
+            if is_gpt5:
+                # Temperature 0.0 is unsupported; omit it to use default 1.0
+                # Use reasoning_effort for models that support it
+                if "codex" not in self.model.lower():
+                    params["reasoning_effort"] = "medium"
+            else:
+                params["temperature"] = 0.0
+
+            response = self.client.chat.completions.create(**params)
             
             elapsed = timer.stop()
-            
-            # Parse response
-            result_text = response.usage.completion_tokens if response.usage else 0
             result = json.loads(response.choices[0].message.content)
             
-            # Validate scores
-            for key in ["context_relevance", "answer_completeness", "faithfulness", "overall_quality"]:
-                if key not in result:
-                    result[key] = 0.0
-                else:
-                    result[key] = max(0.0, min(1.0, float(result[key])))
-            
-            # Add metadata
             result["evaluation_time_ms"] = elapsed
             result["model"] = self.model
-            
-            logger.metric(f"OpenAI_evaluation_time", f"{elapsed:.2f}ms")
-            
             return result
-            
         except Exception as e:
-            logger.error(f"OpenAI evaluation failed: {str(e)}")
-            # Return default scores on error
-            return {
-                "context_relevance": 0.0,
-                "answer_completeness": 0.0,
-                "faithfulness": 0.0,
-                "overall_quality": 0.0,
-                "evaluation_time_ms": timer.elapsed,
-                "model": self.model,
-                "error": str(e)
-            }
-    
+            logger.error(f"OpenAI evaluation failed for {self.model}: {str(e)}")
+            return {"error": str(e), "overall_quality": 0.0, "model": self.model}
+
     @property
     def name(self) -> str:
         return f"OpenAI-{self.model}"

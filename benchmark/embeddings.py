@@ -39,26 +39,19 @@ class OpenAIEmbedding(EmbeddingModel):
         self.client = openai.OpenAI(api_key=api_key)
         self.model_name = "text-embedding-3-large"
         self._dimension = 3072
+        self.max_batch_size = 100
     
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        """Embed multiple documents."""
-        timer = Timer()
-        timer.start()
-        
-        try:
+        all_embeddings = []
+        for i in range(0, len(texts), self.max_batch_size):
+            batch = texts[i : i + self.max_batch_size]
+            logger.info(f"Embedding batch {i//self.max_batch_size + 1}...")
             response = self.client.embeddings.create(
-                input=texts,
+                input=batch,
                 model=self.model_name
             )
-            embeddings = [item.embedding for item in response.data]
-            
-            elapsed = timer.stop()
-            logger.metric(f"{self.name}_batch_embedding_time", f"{elapsed:.2f}ms")
-            
-            return embeddings
-        except Exception as e:
-            logger.error(f"OpenAI embedding failed: {str(e)}")
-            raise
+            all_embeddings.extend([item.embedding for item in response.data])
+        return all_embeddings
     
     def embed_query(self, text: str) -> List[float]:
         """Embed a single query."""

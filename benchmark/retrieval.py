@@ -24,41 +24,44 @@ class RetrievalSystem:
     def index_documents(
         self,
         documents: List[Dict[str, Any]]
-    ) -> Dict[str, float]:
-        """Index documents into vector database.
-        
-        Returns:
-            Dictionary with timing metrics
-        """
+    ) -> Dict[str, Any]:
+        """Index documents into vector database."""
         logger.stage(f"Indexing {len(documents)} documents")
         
-        # Extract document data
         doc_ids = [doc["id"] for doc in documents]
         texts = [doc["text"] for doc in documents]
         metadatas = [doc["metadata"] for doc in documents]
         
-        # Embed documents
+        # 1. Capture embedding time as float
         timer_embed = Timer()
         timer_embed.start()
         embeddings = self.embedding_model.embed_documents(texts)
-        embedding_time = timer_embed.stop()
+        embedding_time = float(timer_embed.stop())
         
+        # Log for display but keep the float variable for math
         logger.metric("embedding_time_ms", f"{embedding_time:.2f}")
         
-        # Insert into vector DB
-        indexing_time = self.vector_db.insert_documents(
+        # 2. Capture indexing time
+        # Ensure your VectorDB.insert_documents returns a float!
+        raw_indexing_time = self.vector_db.insert_documents(
             doc_ids=doc_ids,
             embeddings=embeddings,
             texts=texts,
             metadatas=metadatas
         )
         
+        try:
+            indexing_time = float(raw_indexing_time)
+        except (TypeError, ValueError):
+            logger.error(f"VectorDB returned non-numeric time: {raw_indexing_time}")
+            indexing_time = 0.0
+        
         logger.metric("indexing_time_ms", f"{indexing_time:.2f}")
         
         return {
             "embedding_time_ms": embedding_time,
             "indexing_time_ms": indexing_time,
-            "total_time_ms": embedding_time + indexing_time,
+            "total_time_ms": embedding_time + indexing_time, # Now safe
             "document_count": len(documents)
         }
     
@@ -67,22 +70,19 @@ class RetrievalSystem:
         query: str,
         top_k: int = 3
     ) -> Tuple[List[str], List[str], List[float], Dict[str, float]]:
-        """Retrieve relevant documents for a query.
-        
-        Returns:
-            Tuple of (doc_ids, texts, scores, timing_metrics)
-        """
-        # Embed query
+        """Retrieve relevant documents for a query."""
         timer_embed = Timer()
         timer_embed.start()
         query_embedding = self.embedding_model.embed_query(query)
-        query_embed_time = timer_embed.stop()
+        query_embed_time = float(timer_embed.stop())
         
-        # Search vector DB
-        doc_ids, texts, scores, search_time = self.vector_db.search(
+        # 3. Ensure search returns a numeric search_time
+        doc_ids, texts, scores, raw_search_time = self.vector_db.search(
             query_embedding=query_embedding,
             top_k=top_k
         )
+        
+        search_time = float(raw_search_time) if raw_search_time is not None else 0.0
         
         metrics = {
             "query_embedding_time_ms": query_embed_time,

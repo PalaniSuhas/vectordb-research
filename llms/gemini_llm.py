@@ -7,12 +7,24 @@ from utils.timer import Timer
 from utils.logger import logger
 
 class GeminiLLM:
-    """Google Gemini model for evaluation using the new google-genai SDK."""
+    """Google Gemini model for evaluation and generation."""
     
     def __init__(self, api_key: str, model: str = "gemini-1.5-flash"):
-        # Initializing the new Client
         self.client = genai.Client(api_key=api_key)
         self.model_name = model
+
+    def generate_answer(self, query: str, context: str) -> str:
+        """Generate an answer using Gemini."""
+        prompt = f"Context:\n{context}\n\nQuestion: {query}"
+        try:
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=prompt
+            )
+            return response.text
+        except Exception as e:
+            logger.error(f"Gemini generation failed: {str(e)}")
+            return f"Error: {str(e)}"
     
     def evaluate_retrieval(
         self,
@@ -24,66 +36,40 @@ class GeminiLLM:
         timer = Timer()
         timer.start()
         
-        context = "\n\n".join([
-            f"Document {i+1} (score: {score:.3f}):\n{text}"
-            for i, (text, score) in enumerate(zip(retrieved_texts, retrieved_scores))
-        ])
+        context = "\n\n".join([f"Doc {i+1}:\n{t}" for i, t in enumerate(retrieved_texts)])
+        prompt = f"Evaluate RAG retrieval for Query: {query} with Context: {context}. Return JSON with context_relevance, answer_completeness, faithfulness, overall_quality."
         
-        prompt = f"""You are an evaluation system that assesses retrieval quality.
-Query: {query}
-Retrieved Context: {context}
-
-Evaluate based on:
-1. context_relevance (0.0-1.0)
-2. answer_completeness (0.0-1.0)
-3. faithfulness (0.0-1.0)
-
-Return ONLY JSON:
-{{
-  "context_relevance": <score>,
-  "answer_completeness": <score>,
-  "faithfulness": <score>,
-  "overall_quality": <average>
-}}"""
+        # Check for Gemini 3 or 2.5 thinking capabilities
+        is_thinking_model = any(m in self.model_name for m in ["gemini-3", "gemini-2.5"])
         
         try:
-            # Using the new generate_content API with response_mime_type
+            config = types.GenerateContentConfig(
+                response_mime_type="application/json"
+            )
+            
+            if is_thinking_model:
+                # Gemini 3 uses thinking_level; 2.5 uses thinking_budget
+                if "gemini-3" in self.model_name:
+                    config.thinking_config = types.ThinkingConfig(thinking_level="high")
+                else:
+                    config.thinking_config = types.ThinkingConfig(thinking_budget=4096)
+            else:
+                config.temperature = 0.0
+
             response = self.client.models.generate_content(
                 model=self.model_name,
                 contents=prompt,
-                config=types.GenerateContentConfig(
-                    temperature=0.0,
-                    response_mime_type="application/json"
-                )
+                config=config
             )
             
             elapsed = timer.stop()
             result = json.loads(response.text)
-            
-            # Ensure all keys exist
-            for key in ["context_relevance", "answer_completeness", "faithfulness"]:
-                result[key] = max(0.0, min(1.0, float(result.get(key, 0.0))))
-            
-            if "overall_quality" not in result:
-                result["overall_quality"] = (result["context_relevance"] + result["answer_completeness"] + result["faithfulness"]) / 3
-            
             result["evaluation_time_ms"] = elapsed
             result["model"] = self.model_name
-            
-            logger.metric(f"Gemini_evaluation_time", f"{elapsed:.2f}ms")
             return result
-            
         except Exception as e:
-            logger.error(f"Gemini evaluation failed: {str(e)}")
-            return {
-                "context_relevance": 0.0,
-                "answer_completeness": 0.0,
-                "faithfulness": 0.0,
-                "overall_quality": 0.0,
-                "evaluation_time_ms": timer.stop() if timer.start_time else 0,
-                "model": self.model_name,
-                "error": str(e)
-            }
+            logger.error(f"Gemini evaluation failed for {self.model_name}: {str(e)}")
+            return {"error": str(e), "overall_quality": 0.0, "model": self.model_name}
 
     @property
     def name(self) -> str:

@@ -56,11 +56,10 @@ load_dotenv()
 # Page configuration
 st.set_page_config(
     page_title="Embedding Benchmark System",
-    page_icon="🔬",
     layout="wide"
 )
 
-st.title("🔬 Embedding & Vector DB Benchmark System")
+st.title("Embedding & Vector DB Benchmark System")
 st.markdown("**Canonical Embedding Strategy** - Retrieval decoupled from generation")
 
 # Initialize session state
@@ -95,8 +94,8 @@ ALL_LLM_MODELS = {
         "gpt-5.1-codex-max"
     ],
     "Gemini": [
-        "gemini-3-pro",
-        "gemini-3-flash",
+        "gemini-3-pro-preview",
+        "gemini-3-flash-preview",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-2.5-pro"
@@ -310,7 +309,7 @@ def run_full_benchmark(openai_key: str, gemini_key: str):
     st.session_state.running = False
     
     progress_bar.progress(1.0)
-    status_text.text("✅ Benchmark Complete!")
+    status_text.text(" Benchmark Complete!")
     
     st.success(f"Results saved to: {output_path}")
 
@@ -460,7 +459,7 @@ def chat_with_retrieval(query: str):
 
 # Sidebar Configuration
 with st.sidebar:
-    st.header("⚙️ Configuration")
+    st.header(" Configuration")
     
     # API Keys
     st.subheader("API Keys")
@@ -480,11 +479,11 @@ with st.sidebar:
     # Mode selection
     mode = st.radio(
         "Select Mode",
-        ["🚀 Auto Benchmark", "💬 Test Chatbot"],
+        ["Auto Benchmark", "Test Chatbot"],
         index=0
     )
     
-    if mode == "🚀 Auto Benchmark":
+    if mode == "Auto Benchmark":
         st.info("""
         **Auto Benchmark Mode**
         
@@ -552,15 +551,15 @@ with st.sidebar:
                     gemini_key
                 )
                 if success:
-                    st.success("✅ Chatbot initialized!")
+                    st.success(" Chatbot initialized!")
 
 
 # Main Panel
-if mode == "💬 Test Chatbot":
-    st.header("💬 Test Chatbot")
+if mode == " Test Chatbot":
+    st.header(" Test Chatbot")
     
     if st.session_state.retrieval_system:
-        st.success(f"✅ Chatbot active with {st.session_state.test_llm_model}")
+        st.success(f" Chatbot active with {st.session_state.test_llm_model}")
         
         # Chat interface
         for message in st.session_state.chat_history:
@@ -583,12 +582,12 @@ if mode == "💬 Test Chatbot":
             st.session_state.chat_history.append({"role": "assistant", "content": response})
     
     else:
-        st.info("👈 Configure and initialize the test chatbot in the sidebar")
+        st.info(" Configure and initialize the test chatbot in the sidebar")
 
 elif not st.session_state.benchmark_results:
-    st.info("👈 Click 'Run Full Benchmark' in the sidebar to start automatic testing")
+    st.info(" Click 'Run Full Benchmark' in the sidebar to start automatic testing")
     
-    with st.expander("ℹ️ About Auto Benchmark"):
+    with st.expander(" About Auto Benchmark"):
         st.markdown("""
         ### Automatic Benchmark Testing
         
@@ -618,7 +617,7 @@ elif not st.session_state.benchmark_results:
         """)
 
 else:
-    st.header("📊 Benchmark Results")
+    st.header(" Benchmark Results")
     
     results = st.session_state.benchmark_results
     
@@ -645,7 +644,7 @@ else:
     
     # LLM Analysis
     if "llm_analysis" in results:
-        st.subheader("🤖 LLM Analysis & Recommendation")
+        st.subheader(" LLM Analysis & Recommendation")
         st.markdown(results["llm_analysis"])
     
     st.divider()
@@ -692,7 +691,7 @@ else:
     # Download button
     results_json = json.dumps(results, indent=2)
     st.download_button(
-        label="📥 Download Full Results JSON",
+        label=" Download Full Results JSON",
         data=results_json,
         file_name="benchmark_results.json",
         mime="application/json"
