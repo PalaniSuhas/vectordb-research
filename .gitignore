@@ -1,3 +1,4 @@
 research/
 .env
 __pycache__/
+*.pdf

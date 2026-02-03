@@ -1,0 +1,36 @@
+{
+  "documents": [
+    {
+      "id": "doc_1",
+      "text": "Artificial Intelligence: A Modern Approach by Stuart Russell and Peter Norvig defines AI through four lenses: thinking humanly, acting humanly, thinking rationally, and acting rationally. The book emphasizes the 'rational agent' approach as the primary framework.",
+      "metadata": {"topic": "AI Definitions", "source": "Modern Approach 4th Ed"}
+    },
+    {
+      "id": "doc_2",
+      "text": "The 4th edition includes significant updates on deep learning, multiagent systems, and the safety and ethics of AI. It discusses how probabilistic reasoning and machine learning have become central to the field compared to early symbolic AI.",
+      "metadata": {"topic": "Evolution of AI", "source": "Modern Approach 4th Ed"}
+    }
+  ],
+  "queries": [
+    {
+      "id": "q_1",
+      "text": "What are the four historical approaches to Artificial Intelligence defined by Russell and Norvig?"
+    },
+    {
+      "id": "q_2",
+      "text": "How does the 4th edition differentiate itself from previous versions regarding deep learning and safety?"
+    },
+    {
+      "id": "q_3",
+      "text": "Define a 'rational agent' as presented in the Modern Approach framework."
+    },
+    {
+      "id": "q_4",
+      "text": "What is the role of probabilistic reasoning in modern artificial intelligence systems?"
+    },
+    {
+      "id": "q_5",
+      "text": "Who are the key contributing writers for the 4th global edition of this textbook?"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "benchmark_runs": [
+    {
+      "configuration": {
+        "embedding_model": "all-mpnet-base-v2",
+        "vector_database": "ChromaDB",
+        "embedding_dimension": 768
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 1363.1415409909096,
+        "indexing_time_ms": 3.4976250026375055,
+        "total_time_ms": 1366.639165993547,
+        "document_count": 2
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 221.78519999724813,
+        "avg_vector_search_time_ms": 0.6244166055694222,
+        "avg_total_retrieval_time_ms": 222.40961660281755,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-4o-mini": {
+          "avg_context_relevance": 0.4673999999999999,
+          "avg_answer_completeness": 0.3502,
+          "avg_faithfulness": 0.96,
+          "avg_overall_quality": 0.5912,
+          "avg_evaluation_time_ms": 3149.0042417979566,
+          "total_queries_evaluated": 5
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "What are the four historical approaches to Artificial Intelligence defined by Russell and Norvig?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-4o-mini": {
+              "context_relevance": 0.606,
+              "answer_completeness": 0.5,
+              "faithfulness": 1.0,
+              "overall_quality": 0.702,
+              "evaluation_time_ms": 3631.887124996865,
+              "model": "gpt-4o-mini"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 921.2996249989374,
+            "vector_search_time_ms": 1.34170800447464,
+            "total_retrieval_time_ms": 922.641333003412,
+            "results_count": 2
+          }
+        },
+        {
+          "query": "How does the 4th edition differentiate itself from previous versions regarding deep learning and safety?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-4o-mini": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.4,
+              "faithfulness": 0.9,
+              "overall_quality": 0.6,
+              "evaluation_time_ms": 2844.1858750011306,
+              "model": "gpt-4o-mini"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 33.04345799551811,
+            "vector_search_time_ms": 0.43537501187529415,
+            "total_retrieval_time_ms": 33.478833007393405,
+            "results_count": 2
+          }
+        },
+        {
+          "query": "Define a 'rational agent' as presented in the Modern Approach framework.",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-4o-mini": {
+              "context_relevance": 0.7,
+              "answer_completeness": 0.4,
+              "faithfulness": 0.9,
+              "overall_quality": 0.6666666666666666,
+              "evaluation_time_ms": 5017.720417003147,
+              "model": "gpt-4o-mini"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 119.95770799694583,
+            "vector_search_time_ms": 0.45670899271499366,
+            "total_retrieval_time_ms": 120.41441698966082,
+            "results_count": 2
+          }
+        },
+        {
+          "query": "What is the role of probabilistic reasoning in modern artificial intelligence systems?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-4o-mini": {
+              "context_relevance": 0.531,
+              "answer_completeness": 0.451,
+              "faithfulness": 1.0,
+              "overall_quality": 0.654,
+              "evaluation_time_ms": 2191.3543749979,
+              "model": "gpt-4o-mini"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 13.015999997151084,
+            "vector_search_time_ms": 0.44062500819563866,
+            "total_retrieval_time_ms": 13.456625005346723,
+            "results_count": 2
+          }
+        },
+        {
+          "query": "Who are the key contributing writers for the 4th global edition of this textbook?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-4o-mini": {
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 1.0,
+              "overall_quality": 0.3333333333333333,
+              "evaluation_time_ms": 2059.87341699074,
+              "model": "gpt-4o-mini"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 21.609208997688256,
+            "vector_search_time_ms": 0.44766601058654487,
+            "total_retrieval_time_ms": 22.0568750082748,
+            "results_count": 2
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "all-mpnet-base-v2",
+        "embedding_dimension": 768,
+        "vector_db": "ChromaDB",
+        "vector_db_stats": {
+          "document_count": 2,
+          "dimension": 768,
+          "collection_name": "bench_all_mpnet_base_v2"
+        }
+      }
+    }
+  ],
+  "total_runs": 1,
+  "summary": {
+    "configurations_tested": [
+      "all-mpnet-base-v2 + ChromaDB"
+    ],
+    "best_overall_quality": {
+      "configuration": "all-mpnet-base-v2 + ChromaDB",
+      "llm": "OpenAI-gpt-4o-mini",
+      "score": 0.5912
+    },
+    "fastest_retrieval": {
+      "configuration": "all-mpnet-base-v2 + ChromaDB",
+      "time_ms": 222.40961660281755
+    },
+    "fastest_indexing": {
+      "configuration": "all-mpnet-base-v2 + ChromaDB",
+      "time_ms": 1366.639165993547
+    }
+  }
+}

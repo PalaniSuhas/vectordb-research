@@ -2,7 +2,7 @@ streamlit
 weaviate-client
 chromadb
 openai
-google-generativeai
+google-genai
 sentence-transformers
 transformers
 torch

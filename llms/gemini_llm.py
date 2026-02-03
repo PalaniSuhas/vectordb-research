@@ -1,17 +1,17 @@
-"""Google Gemini LLM implementation for evaluation."""
+"""Google Gemini LLM implementation using the modern google-genai SDK."""
 from typing import List, Dict, Any
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import json
 from utils.timer import Timer
 from utils.logger import logger
 
-
 class GeminiLLM:
-    """Google Gemini model for evaluation."""
+    """Google Gemini model for evaluation using the new google-genai SDK."""
     
     def __init__(self, api_key: str, model: str = "gemini-1.5-flash"):
-        genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel(model)
+        # Initializing the new Client
+        self.client = genai.Client(api_key=api_key)
         self.model_name = model
     
     def evaluate_retrieval(
@@ -20,91 +20,71 @@ class GeminiLLM:
         retrieved_texts: List[str],
         retrieved_scores: List[float]
     ) -> Dict[str, Any]:
-        """Evaluate retrieval quality.
-        
-        Returns:
-            Dictionary with evaluation scores
-        """
+        """Evaluate retrieval quality."""
         timer = Timer()
         timer.start()
         
-        # Construct evaluation prompt
         context = "\n\n".join([
             f"Document {i+1} (score: {score:.3f}):\n{text}"
             for i, (text, score) in enumerate(zip(retrieved_texts, retrieved_scores))
         ])
         
         prompt = f"""You are an evaluation system that assesses retrieval quality.
-
 Query: {query}
+Retrieved Context: {context}
 
-Retrieved Context:
-{context}
+Evaluate based on:
+1. context_relevance (0.0-1.0)
+2. answer_completeness (0.0-1.0)
+3. faithfulness (0.0-1.0)
 
-Evaluate the retrieval based on these metrics:
-
-1. context_relevance: How relevant are the retrieved documents to the query? (0.0 to 1.0)
-2. answer_completeness: Do the documents contain enough information to answer the query? (0.0 to 1.0)
-3. faithfulness: Are the documents factually accurate and consistent? (0.0 to 1.0)
-
-CRITICAL INSTRUCTIONS:
-- Base your scores ONLY on the retrieved context provided
-- Do NOT invent facts or make assumptions
-- Return ONLY valid JSON with no additional text
-- Use decimal numbers between 0.0 and 1.0
-
-Return ONLY this JSON structure:
+Return ONLY JSON:
 {{
   "context_relevance": <score>,
   "answer_completeness": <score>,
   "faithfulness": <score>,
-  "overall_quality": <average of above three scores>
+  "overall_quality": <average>
 }}"""
         
         try:
-            generation_config = {
-                "temperature": 0.0,
-                "response_mime_type": "application/json"
-            }
-            
-            response = self.model.generate_content(
-                prompt,
-                generation_config=generation_config
+            # Using the new generate_content API with response_mime_type
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.0,
+                    response_mime_type="application/json"
+                )
             )
             
             elapsed = timer.stop()
-            
-            # Parse response
             result = json.loads(response.text)
             
-            # Validate scores
-            for key in ["context_relevance", "answer_completeness", "faithfulness", "overall_quality"]:
-                if key not in result:
-                    result[key] = 0.0
-                else:
-                    result[key] = max(0.0, min(1.0, float(result[key])))
+            # Ensure all keys exist
+            for key in ["context_relevance", "answer_completeness", "faithfulness"]:
+                result[key] = max(0.0, min(1.0, float(result.get(key, 0.0))))
             
-            # Add metadata
+            if "overall_quality" not in result:
+                result["overall_quality"] = (result["context_relevance"] + result["answer_completeness"] + result["faithfulness"]) / 3
+            
             result["evaluation_time_ms"] = elapsed
             result["model"] = self.model_name
             
             logger.metric(f"Gemini_evaluation_time", f"{elapsed:.2f}ms")
-            
             return result
             
         except Exception as e:
             logger.error(f"Gemini evaluation failed: {str(e)}")
-            # Return default scores on error
             return {
                 "context_relevance": 0.0,
                 "answer_completeness": 0.0,
                 "faithfulness": 0.0,
                 "overall_quality": 0.0,
-                "evaluation_time_ms": timer.elapsed,
+                "evaluation_time_ms": timer.stop() if timer.start_time else 0,
                 "model": self.model_name,
                 "error": str(e)
             }
-    
+
     @property
     def name(self) -> str:
         return f"Gemini-{self.model_name}"
