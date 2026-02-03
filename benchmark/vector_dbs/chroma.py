@@ -14,25 +14,26 @@ class ChromaVectorDB:
         self.collection_name = collection_name
         self.dimension = dimension
         
-        # Create ephemeral client (in-memory)
-        self.client = chromadb.Client(Settings(
+        # Use the modern EphemeralClient for in-memory benchmarking
+        # This replaces the deprecated chromadb.Client(Settings(...))
+        self.client = chromadb.EphemeralClient(Settings(
             anonymized_telemetry=False,
             allow_reset=True
         ))
         
-        # Delete collection if exists
+        # Reset and recreate collection to ensure a clean benchmark run
         try:
             self.client.delete_collection(name=collection_name)
-        except:
+        except Exception:
             pass
         
-        # Create new collection
+        # We use 'cosine' space for benchmarking LLM embeddings
         self.collection = self.client.create_collection(
             name=collection_name,
-            metadata={"dimension": dimension}
+            metadata={"hnsw:space": "cosine"}
         )
         
-        logger.info(f"ChromaDB collection '{collection_name}' created (dimension={dimension})")
+        logger.info(f"ChromaDB collection '{collection_name}' created (space: cosine, dim: {dimension})")
     
     def insert_documents(
         self,
@@ -41,7 +42,8 @@ class ChromaVectorDB:
         texts: List[str],
         metadatas: List[Dict[str, Any]]
     ) -> float:
-        """Insert documents into ChromaDB.
+        """
+        Insert documents into ChromaDB.
         
         Returns:
             Indexing time in milliseconds
@@ -58,7 +60,7 @@ class ChromaVectorDB:
             )
             
             elapsed = timer.stop()
-            logger.metric(f"ChromaDB_indexing_time", f"{elapsed:.2f}ms")
+            logger.metric("ChromaDB_indexing_time", f"{elapsed:.2f}ms")
             
             return elapsed
         except Exception as e:
@@ -70,7 +72,8 @@ class ChromaVectorDB:
         query_embedding: List[float],
         top_k: int = 3
     ) -> Tuple[List[str], List[str], List[float], float]:
-        """Search for similar documents.
+        """
+        Search for similar documents using cosine similarity.
         
         Returns:
             Tuple of (doc_ids, texts, scores, query_latency_ms)
@@ -86,16 +89,16 @@ class ChromaVectorDB:
             )
             
             elapsed = timer.stop()
-            logger.metric(f"ChromaDB_search_latency", f"{elapsed:.2f}ms")
+            logger.metric("ChromaDB_search_latency", f"{elapsed:.2f}ms")
             
-            # Extract results
-            doc_ids = results['ids'][0] if results['ids'] else []
-            texts = results['documents'][0] if results['documents'] else []
-            distances = results['distances'][0] if results['distances'] else []
+            # Safe extraction using .get() to prevent KeyErrors
+            doc_ids = results.get('ids', [[]])[0]
+            texts = results.get('documents', [[]])[0]
+            distances = results.get('distances', [[]])[0]
             
-            # Convert distances to similarity scores (ChromaDB uses L2 distance)
-            # Lower distance = higher similarity
-            scores = [1.0 / (1.0 + dist) for dist in distances]
+            # Since space is 'cosine', Chroma returns (1 - similarity).
+            # We convert it back to a 0.0 - 1.0 similarity score.
+            scores = [max(0.0, 1.0 - dist) for dist in distances]
             
             return doc_ids, texts, scores, elapsed
             
@@ -109,15 +112,16 @@ class ChromaVectorDB:
         return {
             "document_count": count,
             "dimension": self.dimension,
-            "collection_name": self.collection_name
+            "collection_name": self.collection_name,
+            "metric": "cosine"
         }
     
     def cleanup(self) -> None:
-        """Cleanup resources."""
+        """Cleanup resources by deleting the temporary collection."""
         try:
             self.client.delete_collection(name=self.collection_name)
             logger.info(f"ChromaDB collection '{self.collection_name}' deleted")
-        except:
+        except Exception:
             pass
     
     @property
