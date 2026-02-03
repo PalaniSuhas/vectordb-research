@@ -1,0 +1,12 @@
+streamlit
+weaviate-client
+chromadb
+openai
+google-generativeai
+sentence-transformers
+transformers
+torch
+python-dotenv
+numpy
+pandas
+psutil
