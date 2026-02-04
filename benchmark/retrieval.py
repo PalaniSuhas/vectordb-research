@@ -1,5 +1,6 @@
 """Retrieval orchestration module - FIXED VERSION."""
 from typing import List, Dict, Any, Tuple, Union
+
 from benchmark.embeddings import EmbeddingModel
 from benchmark.vector_dbs.chroma import ChromaVectorDB
 from benchmark.vector_dbs.weaviate import WeaviateVectorDB
@@ -7,6 +8,7 @@ from utils.timer import Timer
 from utils.logger import logger
 
 VectorDB = Union[ChromaVectorDB, WeaviateVectorDB]
+
 
 class RetrievalSystem:
     def __init__(self, embedding_model: EmbeddingModel, vector_db: VectorDB):
@@ -26,6 +28,10 @@ class RetrievalSystem:
                 return float(cleaned)
             except (ValueError, TypeError):
                 return 0.0
+        # Handle unexpected dict return
+        if isinstance(val, dict):
+            logger.error(f"Unexpected dict value in _ensure_float: {val}")
+            return 0.0
         return 0.0
 
     def index_documents(self, documents: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -41,20 +47,29 @@ class RetrievalSystem:
         embed_time = self._ensure_float(timer_embed.stop())
 
         # Time the vector database insertion
-        raw_db_time = self.vector_db.insert_documents(
-            doc_ids=doc_ids,
-            embeddings=embeddings,
-            texts=texts,
-            metadatas=metadatas
-        )
-        db_time = self._ensure_float(raw_db_time)
+        try:
+            raw_db_time = self.vector_db.insert_documents(
+                doc_ids=doc_ids,
+                embeddings=embeddings,
+                texts=texts,
+                metadatas=metadatas
+            )
+            # Ensure we got a float, not a dict or other type
+            if isinstance(raw_db_time, dict):
+                logger.error(f"insert_documents returned dict instead of float: {raw_db_time}")
+                db_time = 0.0
+            else:
+                db_time = self._ensure_float(raw_db_time)
+        except Exception as e:
+            logger.error(f"Error in insert_documents: {str(e)}")
+            db_time = 0.0
 
-        total_time = embed_time + db_time
+        total_time = float(embed_time) + float(db_time)
 
         return {
-            "embedding_time_ms": embed_time,
-            "indexing_time_ms": db_time,
-            "total_time_ms": total_time,
+            "embedding_time_ms": float(embed_time),
+            "indexing_time_ms": float(db_time),
+            "total_time_ms": float(total_time),
             "document_count": len(documents)
         }
 
@@ -65,20 +80,26 @@ class RetrievalSystem:
         query_embedding = self.embedding_model.embed_query(query)
         q_embed_time = self._ensure_float(timer_embed.stop())
 
-        doc_ids, texts, scores, raw_search_time = self.vector_db.search(
-            query_embedding=query_embedding,
-            top_k=top_k
-        )
-        search_time = self._ensure_float(raw_search_time)
+        try:
+            doc_ids, texts, scores, raw_search_time = self.vector_db.search(
+                query_embedding=query_embedding,
+                top_k=top_k
+            )
+            search_time = self._ensure_float(raw_search_time)
+        except Exception as e:
+            logger.error(f"Error in vector_db.search: {str(e)}")
+            doc_ids, texts, scores = [], [], []
+            search_time = 0.0
 
-        total_time = q_embed_time + search_time
+        total_time = float(q_embed_time) + float(search_time)
 
         metrics = {
-            "query_embedding_time_ms": q_embed_time,
-            "vector_search_time_ms": search_time,
-            "total_retrieval_time_ms": total_time,
+            "query_embedding_time_ms": float(q_embed_time),
+            "vector_search_time_ms": float(search_time),
+            "total_retrieval_time_ms": float(total_time),
             "results_count": len(doc_ids)
         }
+
         return doc_ids, texts, scores, metrics
 
     def get_system_info(self) -> Dict[str, Any]:

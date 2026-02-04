@@ -1,4 +1,4 @@
-"""Metrics aggregation and result formatting - FIXED."""
+"""Metrics aggregation and result formatting - COMPREHENSIVE FIX."""
 from typing import Dict, Any, List
 import json
 from pathlib import Path
@@ -7,11 +7,12 @@ from utils.logger import logger
 
 class MetricsAggregator:
     """Aggregates and formats benchmark metrics."""
-    
+
     @staticmethod
     def _ensure_float(val: Any) -> float:
-        """Ensure value is a float."""
-        if val is None:
+        """Ensure value is a float, handling error dictionaries gracefully."""
+        # Handle None and dict (error responses from failed LLM evaluations)
+        if val is None or isinstance(val, dict):
             return 0.0
         if isinstance(val, (int, float)):
             return float(val)
@@ -22,7 +23,7 @@ class MetricsAggregator:
             except (ValueError, TypeError):
                 return 0.0
         return 0.0
-    
+
     @staticmethod
     def aggregate_benchmark_results(
         embedding_model: str,
@@ -63,7 +64,7 @@ class MetricsAggregator:
         }
         
         return result
-    
+
     @staticmethod
     def _average_retrieval_metrics(
         retrieval_metrics: List[Dict[str, Any]]
@@ -103,7 +104,7 @@ class MetricsAggregator:
             "avg_total_retrieval_time_ms": sum(total_retrieval_times) / len(total_retrieval_times),
             "total_queries": len(retrieval_metrics)
         }
-    
+
     @staticmethod
     def save_results(
         results: Dict[str, Any],
@@ -122,7 +123,7 @@ class MetricsAggregator:
             json.dump(results, f, indent=2)
         
         logger.info(f"Results saved to {output_path}")
-    
+
     @staticmethod
     def save_combined_results(
         all_results: List[Dict[str, Any]],
@@ -147,7 +148,7 @@ class MetricsAggregator:
             json.dump(combined, f, indent=2)
         
         logger.info(f"Combined results saved to {output_path}")
-    
+
     @staticmethod
     def _create_summary(all_results: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Create summary statistics across all benchmark runs.
@@ -171,9 +172,14 @@ class MetricsAggregator:
             config_str = f"{config.get('embedding_model')} + {config.get('vector_database')}"
             summary["configurations_tested"].append(config_str)
             
-            # Find best quality
+            # Find best quality - FIXED to handle error dicts
             llm_scores = result.get("llm_evaluation_scores", {})
             for llm_name, scores in llm_scores.items():
+                # Skip if scores is an error dict
+                if isinstance(scores, dict) and "error" in scores:
+                    continue
+                
+                # Use _ensure_float to safely extract quality score
                 quality = MetricsAggregator._ensure_float(scores.get("avg_overall_quality", 0))
                 if quality > best_quality_score:
                     best_quality_score = quality

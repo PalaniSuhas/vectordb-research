@@ -2,3 +2,4 @@ research/
 .env
 __pycache__/
 *.pdf
+data/weaviate/

@@ -1,10 +1,11 @@
-"""Weaviate vector database implementation - FIXED for v1.27.0+."""
+"""Weaviate vector database implementation - FIXED for v1.27.0+ WITHOUT backup-filesystem."""
 from typing import List, Dict, Any, Tuple
 import weaviate
 from weaviate.classes.config import Configure, Property, DataType
 from weaviate.classes.query import MetadataQuery
 from utils.timer import Timer
 from utils.logger import logger
+
 
 class WeaviateVectorDB:
     def __init__(self, collection_name: str, dimension: int):
@@ -15,11 +16,13 @@ class WeaviateVectorDB:
         self._fallback_embeddings = []
         
         try:
-            # Try to connect to embedded Weaviate with latest version
+            # Try to connect to embedded Weaviate with simplified module configuration
             self.client = weaviate.connect_to_embedded(
-                version="1.27.0",  # Updated to 1.27.0
+                version="1.27.0",
                 environment_variables={
-                    "ENABLE_MODULES": "backup-filesystem,text2vec-openai,text2vec-cohere,text2vec-huggingface,ref2vec-centroid,generative-openai,qna-openai"
+                    # Simplified modules - removed backup-filesystem which requires a path
+                    "ENABLE_MODULES": "text2vec-openai,generative-openai",
+                    "PERSISTENCE_DATA_PATH": "./data/weaviate"  # Explicit persistence path
                 }
             )
             
@@ -102,7 +105,7 @@ class WeaviateVectorDB:
                 doc_ids = [self._fallback_storage[i]["doc_id"] for i in top_indices]
                 texts = [self._fallback_storage[i]["text"] for i in top_indices]
                 scores = [similarities[i] for i in top_indices]
-                
+            
             else:
                 # Use Weaviate
                 res = self.collection.query.near_vector(
