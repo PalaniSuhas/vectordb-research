@@ -5,36 +5,28 @@ from chromadb.config import Settings
 from utils.timer import Timer
 from utils.logger import logger
 
-
 class ChromaVectorDB:
     """ChromaDB implementation for vector storage and retrieval."""
     
     def __init__(self, collection_name: str, dimension: int):
-        """Initialize ChromaDB client."""
         self.collection_name = collection_name
         self.dimension = dimension
-        
-        # Use the modern EphemeralClient for in-memory benchmarking
-        # This replaces the deprecated chromadb.Client(Settings(...))
         self.client = chromadb.EphemeralClient(Settings(
             anonymized_telemetry=False,
             allow_reset=True
         ))
         
-        # Reset and recreate collection to ensure a clean benchmark run
         try:
             self.client.delete_collection(name=collection_name)
         except Exception:
             pass
         
-        # We use 'cosine' space for benchmarking LLM embeddings
         self.collection = self.client.create_collection(
             name=collection_name,
             metadata={"hnsw:space": "cosine"}
         )
-        
-        logger.info(f"ChromaDB collection '{collection_name}' created (space: cosine, dim: {dimension})")
-    
+        logger.info(f"ChromaDB collection '{collection_name}' created (dim: {dimension})")
+
     def insert_documents(
         self,
         doc_ids: List[str],
@@ -42,12 +34,6 @@ class ChromaVectorDB:
         texts: List[str],
         metadatas: List[Dict[str, Any]]
     ) -> float:
-        """
-        Insert documents into ChromaDB.
-        
-        Returns:
-            Indexing time in milliseconds
-        """
         timer = Timer()
         timer.start()
         
@@ -58,26 +44,18 @@ class ChromaVectorDB:
                 documents=texts,
                 metadatas=metadatas
             )
-            
-            elapsed = timer.stop()
+            elapsed = timer.stop()  # This is a float
             logger.metric("ChromaDB_indexing_time", f"{elapsed:.2f}ms")
-            
-            return elapsed
+            return float(elapsed) 
         except Exception as e:
             logger.error(f"ChromaDB insert failed: {str(e)}")
             raise
-    
+
     def search(
         self,
         query_embedding: List[float],
         top_k: int = 3
     ) -> Tuple[List[str], List[str], List[float], float]:
-        """
-        Search for similar documents using cosine similarity.
-        
-        Returns:
-            Tuple of (doc_ids, texts, scores, query_latency_ms)
-        """
         timer = Timer()
         timer.start()
         
@@ -87,43 +65,28 @@ class ChromaVectorDB:
                 n_results=top_k,
                 include=["documents", "distances", "metadatas"]
             )
-            
             elapsed = timer.stop()
-            logger.metric("ChromaDB_search_latency", f"{elapsed:.2f}ms")
             
-            # Safe extraction using .get() to prevent KeyErrors
             doc_ids = results.get('ids', [[]])[0]
             texts = results.get('documents', [[]])[0]
             distances = results.get('distances', [[]])[0]
-            
-            # Since space is 'cosine', Chroma returns (1 - similarity).
-            # We convert it back to a 0.0 - 1.0 similarity score.
             scores = [max(0.0, 1.0 - dist) for dist in distances]
             
-            return doc_ids, texts, scores, elapsed
-            
+            return doc_ids, texts, scores, float(elapsed)
         except Exception as e:
             logger.error(f"ChromaDB search failed: {str(e)}")
             raise
-    
+
     def get_stats(self) -> Dict[str, Any]:
-        """Get database statistics."""
         count = self.collection.count()
-        return {
-            "document_count": count,
-            "dimension": self.dimension,
-            "collection_name": self.collection_name,
-            "metric": "cosine"
-        }
-    
+        return {"document_count": count, "dimension": self.dimension, "metric": "cosine"}
+
     def cleanup(self) -> None:
-        """Cleanup resources by deleting the temporary collection."""
         try:
             self.client.delete_collection(name=self.collection_name)
-            logger.info(f"ChromaDB collection '{self.collection_name}' deleted")
         except Exception:
             pass
-    
+
     @property
     def name(self) -> str:
         return "ChromaDB"
