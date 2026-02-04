@@ -1,0 +1,3243 @@
+{
+  "benchmark_runs": [
+    {
+      "configuration": {
+        "embedding_model": "text-embedding-3-large",
+        "vector_database": "ChromaDB",
+        "embedding_dimension": 3072
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 22826.806291996036,
+        "indexing_time_ms": 924.3587919918355,
+        "total_time_ms": 23751.16508398787,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 454.9651750072371,
+        "avg_vector_search_time_ms": 5.954525002744049,
+        "avg_total_retrieval_time_ms": 460.91970000998117,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.8220000000000001,
+          "avg_answer_completeness": 0.6940000000000001,
+          "avg_faithfulness": 0.8460000000000001,
+          "avg_overall_quality": 0.78933333334,
+          "avg_evaluation_time_ms": 4348.958400194533,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.9039999999999999,
+          "avg_answer_completeness": 0.774,
+          "avg_faithfulness": 0.8939999999999999,
+          "avg_overall_quality": 0.85734,
+          "avg_evaluation_time_ms": 18362.264674995095,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.8939999999999999,
+          "avg_answer_completeness": 0.744,
+          "avg_faithfulness": 0.8699999999999999,
+          "avg_overall_quality": 0.8360000000066666,
+          "avg_evaluation_time_ms": 9744.467008399079,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.85,
+          "avg_answer_completeness": 0.774,
+          "avg_faithfulness": 0.842,
+          "avg_overall_quality": 0.8220000000000001,
+          "avg_evaluation_time_ms": 12530.66210799152,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.97,
+          "avg_answer_completeness": 0.9199999999999999,
+          "avg_faithfulness": 0.9800000000000001,
+          "avg_overall_quality": 0.954,
+          "avg_evaluation_time_ms": 16198.485991597408,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 1.0,
+          "avg_answer_completeness": 0.9333333333333332,
+          "avg_faithfulness": 1.0,
+          "avg_overall_quality": 0.9788777777777776,
+          "avg_evaluation_time_ms": 7839.660361001734,
+          "total_queries_evaluated": 3,
+          "failed_evaluations": 2
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.9800000000000001,
+          "avg_answer_completeness": 0.95,
+          "avg_faithfulness": 1.0,
+          "avg_overall_quality": 0.978,
+          "avg_evaluation_time_ms": 8685.49647500622,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.93,
+          "avg_answer_completeness": 0.77,
+          "avg_faithfulness": 0.96,
+          "avg_overall_quality": 0.8859999999999999,
+          "avg_evaluation_time_ms": 8087.249066401273,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 1.0,
+          "avg_answer_completeness": 0.95,
+          "avg_faithfulness": 0.9875,
+          "avg_overall_quality": 0.98,
+          "avg_evaluation_time_ms": 15524.300583252625,
+          "total_queries_evaluated": 4,
+          "failed_evaluations": 1
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.65,
+              "answer_completeness": 0.45,
+              "faithfulness": 0.75,
+              "overall_quality": 0.6166666667,
+              "evaluation_time_ms": 5288.0059169838205,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.86,
+              "overall_quality": 0.82,
+              "evaluation_time_ms": 34124.9243329803,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8833333333333333,
+              "evaluation_time_ms": 9207.168166991323,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.87,
+              "answer_completeness": 0.79,
+              "faithfulness": 0.92,
+              "overall_quality": 0.86,
+              "evaluation_time_ms": 12091.718165989732,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 23245.332167018205,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 11326.314000005368,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 8946.65429199813,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.9,
+              "overall_quality": 0.83,
+              "evaluation_time_ms": 12286.777750006877,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 22017.61295797769,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 142.90162498946302,
+            "vector_search_time_ms": 9.378707996802405,
+            "total_retrieval_time_ms": 152.28033298626542,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.86,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 2827.3661660205107,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.92,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.9,
+              "overall_quality": 0.87,
+              "evaluation_time_ms": 11507.215041987365,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.62,
+              "faithfulness": 0.9,
+              "overall_quality": 0.78,
+              "evaluation_time_ms": 11058.100166002987,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.84,
+              "answer_completeness": 0.76,
+              "faithfulness": 0.8,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 7673.0407080031,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.98,
+              "evaluation_time_ms": 12304.506083019078,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9833,
+              "evaluation_time_ms": 5837.7204579883255,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 7790.036165999481,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 6042.487582977628,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 12793.702916009352,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 258.459667005809,
+            "vector_search_time_ms": 5.496750003658235,
+            "total_retrieval_time_ms": 263.95641700946726,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.76,
+              "faithfulness": 0.87,
+              "overall_quality": 0.84,
+              "evaluation_time_ms": 5215.974916995037,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.93,
+              "answer_completeness": 0.88,
+              "faithfulness": 0.96,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 19251.06149999192,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8666666667,
+              "evaluation_time_ms": 11645.233957999153,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.83,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.75,
+              "overall_quality": 0.77,
+              "evaluation_time_ms": 20507.914624991827,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.98,
+              "evaluation_time_ms": 15120.754582982045,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9833333333333333,
+              "evaluation_time_ms": 6354.946625011507,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 6836.561000003712,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.95,
+              "overall_quality": 0.88,
+              "evaluation_time_ms": 6237.449916021433,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 13623.600292019546,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 406.006500008516,
+            "vector_search_time_ms": 5.47524998546578,
+            "total_retrieval_time_ms": 411.4817499939818,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.76,
+              "faithfulness": 0.89,
+              "overall_quality": 0.84,
+              "evaluation_time_ms": 3431.384583993349,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.66,
+              "faithfulness": 0.8,
+              "overall_quality": 0.76,
+              "evaluation_time_ms": 11821.762584004318,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.8,
+              "overall_quality": 0.8166666667,
+              "evaluation_time_ms": 7945.10154199088,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.82,
+              "faithfulness": 0.87,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 11152.774999995017,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.95,
+              "overall_quality": 0.88,
+              "evaluation_time_ms": 18385.249832994305,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-3-flash-preview",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 10962.004250002792,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 1.0,
+              "overall_quality": 0.87,
+              "evaluation_time_ms": 7417.264040996088,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-2.5-pro",
+              "evaluation_time_ms": 0.0
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 1227.231250028126,
+            "vector_search_time_ms": 5.00666702282615,
+            "total_retrieval_time_ms": 1232.237917050952,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.86,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 4982.060416979948,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.9167,
+              "evaluation_time_ms": 15106.35991601157,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.85,
+              "overall_quality": 0.8333333333,
+              "evaluation_time_ms": 8866.73120901105,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.87,
+              "overall_quality": 0.83,
+              "evaluation_time_ms": 11227.862040977925,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 11936.58729197341,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-3-flash-preview",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 8892.22666702699,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 8452.26604200434,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 13662.286167003913,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 240.2268330042716,
+            "vector_search_time_ms": 4.415250004967675,
+            "total_retrieval_time_ms": 244.6420830092393,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "text-embedding-3-large",
+        "embedding_dimension": 3072,
+        "vector_db": "ChromaDB",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 3072,
+          "metric": "cosine"
+        }
+      }
+    },
+    {
+      "configuration": {
+        "embedding_model": "text-embedding-3-large",
+        "vector_database": "Weaviate",
+        "embedding_dimension": 3072
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 19504.274250008166,
+        "indexing_time_ms": 1466.8797499907669,
+        "total_time_ms": 20971.153999998933,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 345.2396917913575,
+        "avg_vector_search_time_ms": 4.306783800711855,
+        "avg_total_retrieval_time_ms": 349.5464755920693,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.8400000000000001,
+          "avg_answer_completeness": 0.718,
+          "avg_faithfulness": 0.8539999999999999,
+          "avg_overall_quality": 0.8066666666666666,
+          "avg_evaluation_time_ms": 4094.969600002514,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.914,
+          "avg_answer_completeness": 0.798,
+          "avg_faithfulness": 0.8960000000000001,
+          "avg_overall_quality": 0.87134,
+          "avg_evaluation_time_ms": 20990.815600007772,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.9,
+          "avg_answer_completeness": 0.786,
+          "avg_faithfulness": 0.8879999999999999,
+          "avg_overall_quality": 0.858,
+          "avg_evaluation_time_ms": 9841.49903319194,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.8699999999999999,
+          "avg_answer_completeness": 0.784,
+          "avg_faithfulness": 0.868,
+          "avg_overall_quality": 0.842,
+          "avg_evaluation_time_ms": 12803.939158195863,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.97,
+          "avg_answer_completeness": 0.93,
+          "avg_faithfulness": 0.9800000000000001,
+          "avg_overall_quality": 0.958,
+          "avg_evaluation_time_ms": 19334.68315860373,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.9800000000000001,
+          "avg_answer_completeness": 0.9099999999999999,
+          "avg_faithfulness": 1.0,
+          "avg_overall_quality": 0.96326,
+          "avg_evaluation_time_ms": 15248.740608600201,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.96,
+          "avg_answer_completeness": 0.9199999999999999,
+          "avg_faithfulness": 1.0,
+          "avg_overall_quality": 0.96,
+          "avg_evaluation_time_ms": 8674.0361166012,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.8699999999999999,
+          "avg_answer_completeness": 0.73,
+          "avg_faithfulness": 0.9199999999999999,
+          "avg_overall_quality": 0.8400000000000001,
+          "avg_evaluation_time_ms": 8560.86402501096,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.99,
+          "avg_answer_completeness": 0.9400000000000001,
+          "avg_faithfulness": 1.0,
+          "avg_overall_quality": 0.978,
+          "avg_evaluation_time_ms": 18224.818441597745,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.82,
+              "overall_quality": 0.7333333333333334,
+              "evaluation_time_ms": 4947.163750010077,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.8,
+              "overall_quality": 0.81,
+              "evaluation_time_ms": 35068.182749993866,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.85,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 10099.282790994039,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.88,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 20111.781790998066,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 34671.7375839944,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9333333333333333,
+              "evaluation_time_ms": 27820.263499976136,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 7760.532000014791,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.8,
+              "overall_quality": 0.73,
+              "evaluation_time_ms": 11104.663833015366,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 20888.167875004,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 208.95474997814745,
+            "vector_search_time_ms": 9.541584004182369,
+            "total_retrieval_time_ms": 218.49633398232982,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.9,
+              "overall_quality": 0.83,
+              "evaluation_time_ms": 4698.861208016751,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.88,
+              "faithfulness": 0.93,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 12245.180875004735,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "overall_quality": 0.867,
+              "evaluation_time_ms": 10295.080667012371,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.84,
+              "answer_completeness": 0.69,
+              "faithfulness": 0.83,
+              "overall_quality": 0.79,
+              "evaluation_time_ms": 9522.386999975424,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.98,
+              "evaluation_time_ms": 13486.660541006131,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9666666666666667,
+              "evaluation_time_ms": 7096.276374999434,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.98,
+              "evaluation_time_ms": 9825.347208010498,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 5335.667374980403,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 15777.294375002384,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 185.36408300860785,
+            "vector_search_time_ms": 3.3772499882616103,
+            "total_retrieval_time_ms": 188.74133299686946,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.76,
+              "faithfulness": 0.83,
+              "overall_quality": 0.82,
+              "evaluation_time_ms": 2427.2960419766605,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.92,
+              "answer_completeness": 0.83,
+              "faithfulness": 0.91,
+              "overall_quality": 0.89,
+              "evaluation_time_ms": 17718.747500010068,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.88,
+              "faithfulness": 0.95,
+              "overall_quality": 0.91,
+              "evaluation_time_ms": 12602.76633297326,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.81,
+              "faithfulness": 0.87,
+              "overall_quality": 0.853,
+              "evaluation_time_ms": 14133.658124977956,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.98,
+              "evaluation_time_ms": 15257.827916997485,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9833,
+              "evaluation_time_ms": 11570.548084011534,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 7948.4497499943245,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.9,
+              "overall_quality": 0.77,
+              "evaluation_time_ms": 9664.335833018413,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 14454.186458024196,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 722.6883749826811,
+            "vector_search_time_ms": 2.7174590213689953,
+            "total_retrieval_time_ms": 725.4058340040501,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.74,
+              "faithfulness": 0.86,
+              "overall_quality": 0.81,
+              "evaluation_time_ms": 3786.4916250109673,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.83,
+              "answer_completeness": 0.67,
+              "faithfulness": 0.89,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 24466.42779101967,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.86,
+              "overall_quality": 0.82,
+              "evaluation_time_ms": 7596.667790989159,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.84,
+              "faithfulness": 0.92,
+              "overall_quality": 0.88,
+              "evaluation_time_ms": 10751.751375006279,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 18500.392417015973,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 5797.932292014593,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 10050.422499974957,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 1.0,
+              "overall_quality": 0.87,
+              "evaluation_time_ms": 6681.738667015452,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 15846.821166982409,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 306.00670899730176,
+            "vector_search_time_ms": 2.70716700470075,
+            "total_retrieval_time_ms": 308.7138760020025,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.77,
+              "faithfulness": 0.86,
+              "overall_quality": 0.84,
+              "evaluation_time_ms": 4615.035374998115,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.97,
+              "answer_completeness": 0.89,
+              "faithfulness": 0.95,
+              "overall_quality": 0.9367,
+              "evaluation_time_ms": 15455.539084010525,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.88,
+              "overall_quality": 0.843,
+              "evaluation_time_ms": 8613.69758399087,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.89,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.84,
+              "overall_quality": 0.837,
+              "evaluation_time_ms": 9500.117500021588,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 14756.79733400466,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.983,
+              "evaluation_time_ms": 23958.68279199931,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 7785.429125011433,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 10017.914417025167,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 24157.622332975734,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 303.1845419900492,
+            "vector_search_time_ms": 3.1904589850455523,
+            "total_retrieval_time_ms": 306.37500097509474,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "text-embedding-3-large",
+        "embedding_dimension": 3072,
+        "vector_db": "Weaviate",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 3072,
+          "mode": "weaviate_embedded"
+        }
+      }
+    },
+    {
+      "configuration": {
+        "embedding_model": "bge-large-en-v1.5",
+        "vector_database": "ChromaDB",
+        "embedding_dimension": 1024
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 83236.00895897835,
+        "indexing_time_ms": 916.0346249991562,
+        "total_time_ms": 84152.0435839775,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 34.89294160390273,
+        "avg_vector_search_time_ms": 1.1870247952174395,
+        "avg_total_retrieval_time_ms": 36.07996639912017,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.812,
+          "avg_answer_completeness": 0.62,
+          "avg_faithfulness": 0.752,
+          "avg_overall_quality": 0.728,
+          "avg_evaluation_time_ms": 4040.9418082039338,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.8560000000000001,
+          "avg_answer_completeness": 0.638,
+          "avg_faithfulness": 0.8220000000000001,
+          "avg_overall_quality": 0.77132666666,
+          "avg_evaluation_time_ms": 21612.61706679943,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.8380000000000001,
+          "avg_answer_completeness": 0.6439999999999999,
+          "avg_faithfulness": 0.796,
+          "avg_overall_quality": 0.7592666666733333,
+          "avg_evaluation_time_ms": 11200.034450000385,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.774,
+          "avg_answer_completeness": 0.62,
+          "avg_faithfulness": 0.688,
+          "avg_overall_quality": 0.6940000000000001,
+          "avg_evaluation_time_ms": 10876.301133201923,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.8699999999999999,
+          "avg_answer_completeness": 0.73,
+          "avg_faithfulness": 0.82,
+          "avg_overall_quality": 0.806,
+          "avg_evaluation_time_ms": 21387.48368321103,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.8800000000000001,
+          "avg_answer_completeness": 0.744,
+          "avg_faithfulness": 0.89,
+          "avg_overall_quality": 0.8379999999999999,
+          "avg_evaluation_time_ms": 30454.895908391336,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.86,
+          "avg_answer_completeness": 0.6900000000000001,
+          "avg_faithfulness": 0.8800000000000001,
+          "avg_overall_quality": 0.8160000000000001,
+          "avg_evaluation_time_ms": 12221.190691599622,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.7625,
+          "avg_answer_completeness": 0.425,
+          "avg_faithfulness": 0.65,
+          "avg_overall_quality": 0.6125,
+          "avg_evaluation_time_ms": 9208.188395743491,
+          "total_queries_evaluated": 4,
+          "failed_evaluations": 1
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.89,
+          "avg_answer_completeness": 0.64,
+          "avg_faithfulness": 0.74,
+          "avg_overall_quality": 0.756,
+          "avg_evaluation_time_ms": 16446.066833194345,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.7,
+              "overall_quality": 0.7,
+              "evaluation_time_ms": 4423.115458019311,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.82,
+              "overall_quality": 0.81,
+              "evaluation_time_ms": 32428.637917008018,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.8,
+              "overall_quality": 0.7833333333333333,
+              "evaluation_time_ms": 11306.392166996375,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.74,
+              "answer_completeness": 0.58,
+              "faithfulness": 0.66,
+              "overall_quality": 0.66,
+              "evaluation_time_ms": 14343.446790997405,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 23008.965500019258,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 33562.955749977846,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 15179.258624993963,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.7,
+              "overall_quality": 0.72,
+              "evaluation_time_ms": 8223.522082989803,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 15597.448999993503,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 61.61858301493339,
+            "vector_search_time_ms": 1.800333004212007,
+            "total_retrieval_time_ms": 63.4189160191454,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.72,
+              "overall_quality": 0.68,
+              "evaluation_time_ms": 3769.94758300134,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.77,
+              "overall_quality": 0.73,
+              "evaluation_time_ms": 12859.824417013442,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.72,
+              "overall_quality": 0.6833333333333333,
+              "evaluation_time_ms": 10445.302333013387,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.79,
+              "answer_completeness": 0.56,
+              "faithfulness": 0.62,
+              "overall_quality": 0.66,
+              "evaluation_time_ms": 12751.982250018045,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.9,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 19901.653458015062,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.65,
+              "faithfulness": 0.95,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 50451.28087498597,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.4,
+              "overall_quality": 0.4,
+              "evaluation_time_ms": 20685.039959003916,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.8,
+              "overall_quality": 0.63,
+              "evaluation_time_ms": 15208.39558300213,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.3,
+              "overall_quality": 0.43,
+              "evaluation_time_ms": 16369.171250000363,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 23.455957998521626,
+            "vector_search_time_ms": 1.015332993119955,
+            "total_retrieval_time_ms": 24.47129099164158,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.86,
+              "overall_quality": 0.84,
+              "evaluation_time_ms": 2994.7407909785397,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8333333333,
+              "evaluation_time_ms": 18305.99212498055,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.9,
+              "overall_quality": 0.883,
+              "evaluation_time_ms": 8622.090999997454,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.83,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.8,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 10128.986791998614,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 15109.41962499055,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9833333333333333,
+              "evaluation_time_ms": 22970.111583999824,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.98,
+              "evaluation_time_ms": 6246.855083008995,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 5633.173791982699,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 15949.664582993137,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 25.47525000409223,
+            "vector_search_time_ms": 1.145207992522046,
+            "total_retrieval_time_ms": 26.620457996614277,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.7,
+              "overall_quality": 0.68,
+              "evaluation_time_ms": 4939.088417013409,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.5,
+              "faithfulness": 0.7,
+              "overall_quality": 0.66,
+              "evaluation_time_ms": 19450.10312498198,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.52,
+              "faithfulness": 0.76,
+              "overall_quality": 0.6866666667,
+              "evaluation_time_ms": 17064.837208017707,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.52,
+              "faithfulness": 0.65,
+              "overall_quality": 0.65,
+              "evaluation_time_ms": 8431.687083008,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.3,
+              "overall_quality": 0.37,
+              "evaluation_time_ms": 31581.52862501447,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.65,
+              "answer_completeness": 0.35,
+              "faithfulness": 0.5,
+              "overall_quality": 0.5,
+              "evaluation_time_ms": 24042.34537499724,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.4,
+              "faithfulness": 1.0,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 8801.857957994798,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.1,
+              "overall_quality": 0.2,
+              "evaluation_time_ms": 7767.662124999333,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.4,
+              "overall_quality": 0.5,
+              "evaluation_time_ms": 19352.612374990713,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 25.521542003843933,
+            "vector_search_time_ms": 0.9785000002011657,
+            "total_retrieval_time_ms": 26.5000420040451,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.62,
+              "faithfulness": 0.78,
+              "overall_quality": 0.74,
+              "evaluation_time_ms": 4077.81679200707,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.65,
+              "faithfulness": 0.92,
+              "overall_quality": 0.8233,
+              "evaluation_time_ms": 25018.527750013163,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.8,
+              "overall_quality": 0.76,
+              "evaluation_time_ms": 8561.549541977001,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.73,
+              "answer_completeness": 0.66,
+              "faithfulness": 0.71,
+              "overall_quality": 0.7,
+              "evaluation_time_ms": 8725.402749987552,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 17335.85120801581,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.92,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9566666666666667,
+              "evaluation_time_ms": 21247.785957995802,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 10192.94183299644,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-2.5-flash-lite",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 14961.43695799401,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 38.393374998122454,
+            "vector_search_time_ms": 0.995749986032024,
+            "total_retrieval_time_ms": 39.38912498415448,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "bge-large-en-v1.5",
+        "embedding_dimension": 1024,
+        "vector_db": "ChromaDB",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 1024,
+          "metric": "cosine"
+        }
+      }
+    },
+    {
+      "configuration": {
+        "embedding_model": "bge-large-en-v1.5",
+        "vector_database": "Weaviate",
+        "embedding_dimension": 1024
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 83995.67237499286,
+        "indexing_time_ms": 1387.9342500003986,
+        "total_time_ms": 85383.60662499326,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 23.76257498981431,
+        "avg_vector_search_time_ms": 1.3830417883582413,
+        "avg_total_retrieval_time_ms": 25.145616778172553,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.7939999999999999,
+          "avg_answer_completeness": 0.592,
+          "avg_faithfulness": 0.726,
+          "avg_overall_quality": 0.7040000000066666,
+          "avg_evaluation_time_ms": 4151.931016991148,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.868,
+          "avg_answer_completeness": 0.678,
+          "avg_faithfulness": 0.7859999999999999,
+          "avg_overall_quality": 0.77733333334,
+          "avg_evaluation_time_ms": 21317.780458397465,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.82,
+          "avg_answer_completeness": 0.5900000000000001,
+          "avg_faithfulness": 0.77,
+          "avg_overall_quality": 0.7266666666666667,
+          "avg_evaluation_time_ms": 9606.335816794308,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.778,
+          "avg_answer_completeness": 0.572,
+          "avg_faithfulness": 0.7060000000000001,
+          "avg_overall_quality": 0.6839999999999999,
+          "avg_evaluation_time_ms": 13662.665875005769,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.93,
+          "avg_answer_completeness": 0.74,
+          "avg_faithfulness": 0.79,
+          "avg_overall_quality": 0.8192,
+          "avg_evaluation_time_ms": 28717.491516598966,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.85,
+          "avg_answer_completeness": 0.7,
+          "avg_faithfulness": 0.9625,
+          "avg_overall_quality": 0.8374999999999999,
+          "avg_evaluation_time_ms": 22029.536229245423,
+          "total_queries_evaluated": 4,
+          "failed_evaluations": 1
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.8699999999999999,
+          "avg_answer_completeness": 0.6799999999999999,
+          "avg_faithfulness": 0.9800000000000001,
+          "avg_overall_quality": 0.844,
+          "avg_evaluation_time_ms": 8531.441741791787,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.875,
+          "avg_answer_completeness": 0.725,
+          "avg_faithfulness": 0.9,
+          "avg_overall_quality": 0.8400000000000001,
+          "avg_evaluation_time_ms": 9323.237718752353,
+          "total_queries_evaluated": 4,
+          "failed_evaluations": 1
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.95,
+          "avg_answer_completeness": 0.74,
+          "avg_faithfulness": 0.9199999999999999,
+          "avg_overall_quality": 0.8699999999999999,
+          "avg_evaluation_time_ms": 17346.934800199233,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.6,
+              "overall_quality": 0.6333333333333333,
+              "evaluation_time_ms": 4708.395208988804,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.7,
+              "overall_quality": 0.79,
+              "evaluation_time_ms": 25203.386333974777,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.8,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 10651.73800001503,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.72,
+              "answer_completeness": 0.48,
+              "faithfulness": 0.54,
+              "overall_quality": 0.58,
+              "evaluation_time_ms": 13406.222292018356,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.9,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 18539.896874979604,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 50069.82141698245,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 6826.705249986844,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.9,
+              "overall_quality": 0.77,
+              "evaluation_time_ms": 7102.455000014743,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 18160.622166993562,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 64.60433398024179,
+            "vector_search_time_ms": 4.071499977726489,
+            "total_retrieval_time_ms": 68.67583395796828,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.72,
+              "overall_quality": 0.68,
+              "evaluation_time_ms": 3606.254916987382,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.63,
+              "faithfulness": 0.7,
+              "overall_quality": 0.7166666667,
+              "evaluation_time_ms": 20618.508792016655,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.75,
+              "overall_quality": 0.7166666666666667,
+              "evaluation_time_ms": 9011.084915982792,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.52,
+              "faithfulness": 0.6,
+              "overall_quality": 0.63,
+              "evaluation_time_ms": 10547.979583003325,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.8,
+              "overall_quality": 0.816,
+              "evaluation_time_ms": 27034.655458002817,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.95,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 20069.730875024106,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.9,
+              "overall_quality": 0.53,
+              "evaluation_time_ms": 9747.731709008804,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.75,
+              "overall_quality": 0.73,
+              "evaluation_time_ms": 12369.162582996069,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.8,
+              "overall_quality": 0.67,
+              "evaluation_time_ms": 21298.3775419998,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 15.64629198401235,
+            "vector_search_time_ms": 0.7963339739944786,
+            "total_retrieval_time_ms": 16.44262595800683,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.79,
+              "faithfulness": 0.87,
+              "overall_quality": 0.84,
+              "evaluation_time_ms": 4408.439916995121,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.94,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.91,
+              "overall_quality": 0.88,
+              "evaluation_time_ms": 19353.073542006314,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8666666666666667,
+              "evaluation_time_ms": 10337.62612499413,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.79,
+              "answer_completeness": 0.66,
+              "faithfulness": 0.85,
+              "overall_quality": 0.77,
+              "evaluation_time_ms": 15735.021875007078,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 23758.52729100734,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 6492.512999975588,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 6508.365208981559,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 9726.941667002393,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 14646.070624992717,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 13.308958004927263,
+            "vector_search_time_ms": 0.7405420183204114,
+            "total_retrieval_time_ms": 14.049500023247674,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.72,
+              "answer_completeness": 0.45,
+              "faithfulness": 0.62,
+              "overall_quality": 0.5966666667,
+              "evaluation_time_ms": 3428.491500002565,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.72,
+              "overall_quality": 0.69,
+              "evaluation_time_ms": 20824.11016599508,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.65,
+              "answer_completeness": 0.4,
+              "faithfulness": 0.6,
+              "overall_quality": 0.55,
+              "evaluation_time_ms": 8309.528583980864,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.78,
+              "overall_quality": 0.73,
+              "evaluation_time_ms": 13828.729000000749,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.3,
+              "overall_quality": 0.48,
+              "evaluation_time_ms": 55925.00537500018,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.9,
+              "overall_quality": 0.6,
+              "evaluation_time_ms": 11486.079624999547,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.5,
+              "faithfulness": 1.0,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 10359.935707994737,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-2.5-flash-lite",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.5,
+              "faithfulness": 0.8,
+              "overall_quality": 0.73,
+              "evaluation_time_ms": 16700.28991700383,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 12.695415993221104,
+            "vector_search_time_ms": 0.6883329770062119,
+            "total_retrieval_time_ms": 13.383748970227316,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.62,
+              "faithfulness": 0.82,
+              "overall_quality": 0.77,
+              "evaluation_time_ms": 4608.073541981867,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.65,
+              "faithfulness": 0.9,
+              "overall_quality": 0.81,
+              "evaluation_time_ms": 20589.8234579945,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.45,
+              "faithfulness": 0.8,
+              "overall_quality": 0.7,
+              "evaluation_time_ms": 9721.701458998723,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.76,
+              "overall_quality": 0.71,
+              "evaluation_time_ms": 14795.376624999335,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 18329.372584004886,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "error": "'list' object has no attribute 'setdefault'",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-3-flash-preview",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 9214.47083298699,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 8094.391624996206,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 15929.313750006258,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 12.557874986669049,
+            "vector_search_time_ms": 0.6184999947436154,
+            "total_retrieval_time_ms": 13.176374981412664,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "bge-large-en-v1.5",
+        "embedding_dimension": 1024,
+        "vector_db": "Weaviate",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 1024,
+          "mode": "weaviate_embedded"
+        }
+      }
+    },
+    {
+      "configuration": {
+        "embedding_model": "all-mpnet-base-v2",
+        "vector_database": "ChromaDB",
+        "embedding_dimension": 768
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 21692.777416988974,
+        "indexing_time_ms": 846.9633340137079,
+        "total_time_ms": 22539.740751002682,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 22.65339161385782,
+        "avg_vector_search_time_ms": 0.9889751963783056,
+        "avg_total_retrieval_time_ms": 23.642366810236126,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.732,
+          "avg_answer_completeness": 0.538,
+          "avg_faithfulness": 0.694,
+          "avg_overall_quality": 0.654,
+          "avg_evaluation_time_ms": 4334.288992010988,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.786,
+          "avg_answer_completeness": 0.6439999999999999,
+          "avg_faithfulness": 0.772,
+          "avg_overall_quality": 0.734,
+          "avg_evaluation_time_ms": 24101.222825003788,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.826,
+          "avg_answer_completeness": 0.624,
+          "avg_faithfulness": 0.772,
+          "avg_overall_quality": 0.7407333333333332,
+          "avg_evaluation_time_ms": 10803.343433595728,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.7060000000000001,
+          "avg_answer_completeness": 0.6199999999999999,
+          "avg_faithfulness": 0.712,
+          "avg_overall_quality": 0.6794,
+          "avg_evaluation_time_ms": 14812.040641607018,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.8699999999999999,
+          "avg_answer_completeness": 0.8,
+          "avg_faithfulness": 0.89,
+          "avg_overall_quality": 0.8539999999999999,
+          "avg_evaluation_time_ms": 23302.952416799963,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.85,
+          "avg_answer_completeness": 0.7333333333333333,
+          "avg_faithfulness": 0.7999999999999999,
+          "avg_overall_quality": 0.7943444444444444,
+          "avg_evaluation_time_ms": 13295.40602832761,
+          "total_queries_evaluated": 3,
+          "failed_evaluations": 2
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.8300000000000001,
+          "avg_answer_completeness": 0.73,
+          "avg_faithfulness": 0.8300000000000001,
+          "avg_overall_quality": 0.796,
+          "avg_evaluation_time_ms": 8933.437191596022,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.68,
+          "avg_answer_completeness": 0.58,
+          "avg_faithfulness": 0.76,
+          "avg_overall_quality": 0.68,
+          "avg_evaluation_time_ms": 8214.45637519937,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.8400000000000001,
+          "avg_answer_completeness": 0.76,
+          "avg_faithfulness": 0.86,
+          "avg_overall_quality": 0.82,
+          "avg_evaluation_time_ms": 17291.320583206834,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.56,
+              "faithfulness": 0.67,
+              "overall_quality": 0.67,
+              "evaluation_time_ms": 6776.282417005859,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.92,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.9,
+              "overall_quality": 0.87,
+              "evaluation_time_ms": 23861.049250001088,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8833333333333333,
+              "evaluation_time_ms": 13823.845165985404,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.77,
+              "answer_completeness": 0.58,
+              "faithfulness": 0.63,
+              "overall_quality": 0.66,
+              "evaluation_time_ms": 26214.993125002366,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 26088.301792013226,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.983,
+              "evaluation_time_ms": 22068.26595898019,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 10854.925082996488,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 11160.455667006318,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 16794.703791994834,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 32.97591701266356,
+            "vector_search_time_ms": 1.5245839895214885,
+            "total_retrieval_time_ms": 34.50050100218505,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.62,
+              "answer_completeness": 0.48,
+              "faithfulness": 0.7,
+              "overall_quality": 0.6,
+              "evaluation_time_ms": 4571.519292017911,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.7,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.75,
+              "overall_quality": 0.68,
+              "evaluation_time_ms": 21143.77587501076,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.86,
+              "overall_quality": 0.82,
+              "evaluation_time_ms": 9924.922709004022,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.65,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.8,
+              "overall_quality": 0.717,
+              "evaluation_time_ms": 16487.826542026596,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 18224.688707996393,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9833333333333333,
+              "evaluation_time_ms": 7269.841792003717,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.88,
+              "evaluation_time_ms": 8906.457709003007,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 8697.088667016942,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 16216.637833014829,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 20.708167023258284,
+            "vector_search_time_ms": 0.916084012715146,
+            "total_retrieval_time_ms": 21.62425103597343,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.83,
+              "overall_quality": 0.8033333333,
+              "evaluation_time_ms": 4400.506000005407,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.82,
+              "faithfulness": 0.89,
+              "overall_quality": 0.86,
+              "evaluation_time_ms": 27435.37341701449,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.85,
+              "overall_quality": 0.817,
+              "evaluation_time_ms": 11051.850834017387,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.8,
+              "overall_quality": 0.75,
+              "evaluation_time_ms": 10021.034250006778,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 15407.890750007937,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-3-flash-preview",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 5620.347041985951,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 6050.714333017822,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 14950.102125003468,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 20.26337498682551,
+            "vector_search_time_ms": 0.8975410019047558,
+            "total_retrieval_time_ms": 21.160915988730267,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.62,
+              "answer_completeness": 0.38,
+              "faithfulness": 0.55,
+              "overall_quality": 0.5166666667,
+              "evaluation_time_ms": 2562.1325420215726,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.55,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.4,
+              "overall_quality": 0.42,
+              "evaluation_time_ms": 14265.328207984567,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.4,
+              "faithfulness": 0.5,
+              "overall_quality": 0.5,
+              "evaluation_time_ms": 10307.00733399135,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.62,
+              "answer_completeness": 0.54,
+              "faithfulness": 0.56,
+              "overall_quality": 0.57,
+              "evaluation_time_ms": 9970.803333009826,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.4,
+              "faithfulness": 0.5,
+              "overall_quality": 0.5,
+              "evaluation_time_ms": 33549.51570898993,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.55,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.4,
+              "overall_quality": 0.4167,
+              "evaluation_time_ms": 10548.11033399892,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.1,
+              "faithfulness": 0.2,
+              "overall_quality": 0.3,
+              "evaluation_time_ms": 13414.447332994314,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.2,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.1,
+              "overall_quality": 0.1,
+              "evaluation_time_ms": 6254.133833979722,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.4,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.3,
+              "overall_quality": 0.3,
+              "evaluation_time_ms": 14132.827708002878,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 19.212208018871024,
+            "vector_search_time_ms": 0.7979169895406812,
+            "total_retrieval_time_ms": 20.010125008411705,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.72,
+              "overall_quality": 0.68,
+              "evaluation_time_ms": 3361.0047090041917,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.92,
+              "overall_quality": 0.84,
+              "evaluation_time_ms": 33800.587375008035,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.5,
+              "faithfulness": 0.75,
+              "overall_quality": 0.6833333333333333,
+              "evaluation_time_ms": 8909.091124980478,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.74,
+              "answer_completeness": 0.58,
+              "faithfulness": 0.77,
+              "overall_quality": 0.7,
+              "evaluation_time_ms": 11365.545957989525,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 23244.365124992328,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "error": "'list' object has no attribute 'setdefault'",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-3-flash-preview",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 5871.008791000349,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 8909.889374976046,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 24362.33145801816,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 20.107291027670726,
+            "vector_search_time_ms": 0.8087499882094562,
+            "total_retrieval_time_ms": 20.916041015880182,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "all-mpnet-base-v2",
+        "embedding_dimension": 768,
+        "vector_db": "ChromaDB",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 768,
+          "metric": "cosine"
+        }
+      }
+    },
+    {
+      "configuration": {
+        "embedding_model": "all-mpnet-base-v2",
+        "vector_database": "Weaviate",
+        "embedding_dimension": 768
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 22281.62283397978,
+        "indexing_time_ms": 1396.839541994268,
+        "total_time_ms": 23678.46237597405,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 18.599883402930573,
+        "avg_vector_search_time_ms": 1.3539416017010808,
+        "avg_total_retrieval_time_ms": 19.953825004631653,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.716,
+          "avg_answer_completeness": 0.546,
+          "avg_faithfulness": 0.7,
+          "avg_overall_quality": 0.65400666666,
+          "avg_evaluation_time_ms": 5450.35289140651,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.78,
+          "avg_answer_completeness": 0.612,
+          "avg_faithfulness": 0.82,
+          "avg_overall_quality": 0.73866666666,
+          "avg_evaluation_time_ms": 24760.2761748014,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.806,
+          "avg_answer_completeness": 0.6,
+          "avg_faithfulness": 0.764,
+          "avg_overall_quality": 0.7219333333333333,
+          "avg_evaluation_time_ms": 10382.919650000986,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.732,
+          "avg_answer_completeness": 0.5900000000000001,
+          "avg_faithfulness": 0.6900000000000001,
+          "avg_overall_quality": 0.6706,
+          "avg_evaluation_time_ms": 14045.881841599476,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.89,
+          "avg_answer_completeness": 0.78,
+          "avg_faithfulness": 0.8800000000000001,
+          "avg_overall_quality": 0.85,
+          "avg_evaluation_time_ms": 22389.40460839658,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.85,
+          "avg_answer_completeness": 0.75,
+          "avg_faithfulness": 0.95,
+          "avg_overall_quality": 0.8508416666666667,
+          "avg_evaluation_time_ms": 19746.570833252918,
+          "total_queries_evaluated": 4,
+          "failed_evaluations": 1
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.8400000000000001,
+          "avg_answer_completeness": 0.78,
+          "avg_faithfulness": 0.96,
+          "avg_overall_quality": 0.858,
+          "avg_evaluation_time_ms": 9041.444250009954,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.675,
+          "avg_answer_completeness": 0.6,
+          "avg_faithfulness": 0.7375,
+          "avg_overall_quality": 0.6725,
+          "avg_evaluation_time_ms": 9163.613562493993,
+          "total_queries_evaluated": 4,
+          "failed_evaluations": 1
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.8699999999999999,
+          "avg_answer_completeness": 0.79,
+          "avg_faithfulness": 0.9800000000000001,
+          "avg_overall_quality": 0.8800000000000001,
+          "avg_evaluation_time_ms": 16558.377883199137,
+          "total_queries_evaluated": 5,
+          "failed_evaluations": 0
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.74,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.62,
+              "overall_quality": 0.64,
+              "evaluation_time_ms": 4472.552916005952,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.82,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 36637.9267500015,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.85,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 14848.58799999347,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.46,
+              "faithfulness": 0.44,
+              "overall_quality": 0.56,
+              "evaluation_time_ms": 15359.33320899494,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 24376.876958995126,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 20493.325749994256,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.98,
+              "evaluation_time_ms": 10553.167625010246,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "overall_quality": 0.87,
+              "evaluation_time_ms": 9007.421374990372,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 16739.613124984317,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 52.17204100335948,
+            "vector_search_time_ms": 3.5929589939769357,
+            "total_retrieval_time_ms": 55.76499999733642,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.72,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.68,
+              "overall_quality": 0.65,
+              "evaluation_time_ms": 6093.211625004187,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.66,
+              "faithfulness": 0.88,
+              "overall_quality": 0.79,
+              "evaluation_time_ms": 22220.927791000577,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.7,
+              "answer_completeness": 0.5,
+              "faithfulness": 0.8,
+              "overall_quality": 0.6666666666666666,
+              "evaluation_time_ms": 9627.22420800128,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.68,
+              "answer_completeness": 0.63,
+              "faithfulness": 0.62,
+              "overall_quality": 0.64,
+              "evaluation_time_ms": 14949.72695800243,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 22432.028000010177,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-3-flash-preview",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 9072.718250012258,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.85,
+              "overall_quality": 0.77,
+              "evaluation_time_ms": 6821.87783299014,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 20486.867958010407,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 13.639250013511628,
+            "vector_search_time_ms": 0.8646660135127604,
+            "total_retrieval_time_ms": 14.503916027024388,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.87,
+              "overall_quality": 0.83,
+              "evaluation_time_ms": 4990.9302910091355,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "overall_quality": 0.87,
+              "evaluation_time_ms": 23076.820082991617,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.85,
+              "overall_quality": 0.833,
+              "evaluation_time_ms": 10647.547625005245,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.84,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.85,
+              "overall_quality": 0.823,
+              "evaluation_time_ms": 12209.857749985531,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 14313.499874988338,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9333333333333333,
+              "evaluation_time_ms": 17101.43187502399,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 6958.756833017105,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-2.5-flash-lite",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 13314.226624992443,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 12.407417001668364,
+            "vector_search_time_ms": 0.8610830118414015,
+            "total_retrieval_time_ms": 13.268500013509765,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.45,
+              "answer_completeness": 0.25,
+              "faithfulness": 0.55,
+              "overall_quality": 0.4167,
+              "evaluation_time_ms": 6042.341332999058,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.4,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.6,
+              "overall_quality": 0.4333333333,
+              "evaluation_time_ms": 16897.209834016394,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.65,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.5,
+              "overall_quality": 0.48,
+              "evaluation_time_ms": 9297.787875024369,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.62,
+              "answer_completeness": 0.42,
+              "faithfulness": 0.75,
+              "overall_quality": 0.6,
+              "evaluation_time_ms": 10625.971333007328,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.5,
+              "overall_quality": 0.47,
+              "evaluation_time_ms": 30785.13825000846,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.8,
+              "overall_quality": 0.5333333333333333,
+              "evaluation_time_ms": 9928.06483298773,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.65,
+              "answer_completeness": 0.35,
+              "faithfulness": 0.8,
+              "overall_quality": 0.6,
+              "evaluation_time_ms": 11344.05675000744,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.2,
+              "answer_completeness": 0.1,
+              "faithfulness": 0.3,
+              "overall_quality": 0.2,
+              "evaluation_time_ms": 10140.19933398231,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.9,
+              "overall_quality": 0.57,
+              "evaluation_time_ms": 17716.085332998773,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 7.182542001828551,
+            "vector_search_time_ms": 0.7499170023947954,
+            "total_retrieval_time_ms": 7.932459004223347,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.78,
+              "overall_quality": 0.7333333333,
+              "evaluation_time_ms": 5652.728292014217,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 24968.496415996924,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.65,
+              "faithfulness": 0.82,
+              "overall_quality": 0.78,
+              "evaluation_time_ms": 7493.450541980565,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.74,
+              "answer_completeness": 0.66,
+              "faithfulness": 0.79,
+              "overall_quality": 0.73,
+              "evaluation_time_ms": 17084.51995800715,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 20039.479957980802,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9667,
+              "evaluation_time_ms": 31463.460875005694,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 7278.521792002721,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 10684.955708013149,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 14535.096375009743,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 7.598166994284838,
+            "vector_search_time_ms": 0.701082986779511,
+            "total_retrieval_time_ms": 8.29924998106435,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "all-mpnet-base-v2",
+        "embedding_dimension": 768,
+        "vector_db": "Weaviate",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 768,
+          "mode": "weaviate_embedded"
+        }
+      }
+    }
+  ],
+  "total_runs": 6,
+  "summary": {
+    "configurations_tested": [
+      "text-embedding-3-large + ChromaDB",
+      "text-embedding-3-large + Weaviate",
+      "bge-large-en-v1.5 + ChromaDB",
+      "bge-large-en-v1.5 + Weaviate",
+      "all-mpnet-base-v2 + ChromaDB",
+      "all-mpnet-base-v2 + Weaviate"
+    ],
+    "best_overall_quality": {
+      "configuration": "text-embedding-3-large + ChromaDB",
+      "llm": "Gemini-gemini-2.5-pro",
+      "score": 0.98
+    },
+    "fastest_retrieval": {
+      "configuration": "all-mpnet-base-v2 + Weaviate",
+      "time_ms": 19.953825004631653
+    },
+    "fastest_indexing": {
+      "configuration": "text-embedding-3-large + Weaviate",
+      "time_ms": 20971.153999998933
+    }
+  },
+  "llm_analysis": "### Comprehensive Analysis of Benchmark Results\n\n1. **Best Performing Configuration**: The configuration that performed best overall is the **text-embedding-3-large + Weaviate**, which yielded the highest overall quality scores for most models across the board. Notably, the top-performing model in this configuration was **Gemini-gemini-2.5-pro**, achieving an overall quality score of **0.980**, closely followed by **Gemini-gemini-3-flash** at **0.979**. The combination also demonstrated a favorable balance between indexing time (20971.15ms) and average retrieval time (349.55ms), indicating its efficiency in both data processing and retrieval without significantly sacrificing quality.\n\n2. **Trade-offs Between Speed and Quality**: A clear trade-off between speed and quality is evident in the benchmark results. The fastest configurations, namely those utilizing **bge-large-en-v1.5** with either ChromaDB or Weaviate, exhibited considerably lower overall quality scores (e.g., **0.704** for OpenAI-gpt-5.2 using Weaviate). In contrast, configurations using **text-embedding-3-large** provided higher quality scores but had longer indexing and retrieval times. This suggests that while faster models can improve responsiveness, they may compromise the depth and accuracy of results, which are critical for applications requiring nuanced understanding or detailed responses.\n\n3. **Recommended Configuration for Production Use**: Based on a balanced evaluation of quality, speed, and indexing times, I recommend the **text-embedding-3-large + Weaviate** configuration for production use. This combination not only leads to the highest overall quality but also maintains a reasonable performance in terms of indexing and retrieval speed. The configuration provides a robust solution for applications where the quality of results is paramount, such as sentiment analysis, customer support, and content generation, ensuring that users receive accurate and relevant outputs in a timely manner.\n\n4. **Surprising Results and Patterns**: Several patterns emerge from the results that may be surprising. Firstly, the **Gemini models consistently outperformed the OpenAI models** across most configurations, particularly in the text-embedding-3-large + Weaviate setup. This suggests that the Gemini architecture may be more adept at handling complex queries or embedding tasks, potentially making it a more favorable choice moving forward. Additionally, the significant disparity in quality between faster configurations (like bge-large-en-v1.5) and those offering better quality (like text-embedding-3-large) highlights the inherent challenge of selecting the right model for specific use cases, emphasizing the need for careful consideration of application requirements when deciding on an embedding model and vector database combination."
+}

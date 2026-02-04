@@ -110,17 +110,28 @@ class EvaluationPipeline:
             for eval_data in evaluations:
                 llm_eval = eval_data["evaluations"].get(llm_name, {})
                 
-                # CRITICAL FIX: Skip if this evaluation resulted in an error
                 if "error" in llm_eval:
-                    logger.info(f"Skipping failed evaluation for {llm_name}: {llm_eval.get('error', 'Unknown error')}")
+                    logger.info(f"Skipping failed evaluation for {llm_name}: {llm_eval.get('error')}")
                     continue
                 
-                # Only append scores if evaluation was successful
-                context_relevance_scores.append(llm_eval.get("context_relevance", 0.0))
-                answer_completeness_scores.append(llm_eval.get("answer_completeness", 0.0))
-                faithfulness_scores.append(llm_eval.get("faithfulness", 0.0))
-                overall_quality_scores.append(llm_eval.get("overall_quality", 0.0))
-                evaluation_times.append(llm_eval.get("evaluation_time_ms", 0.0))
+                # Helper to handle cases where LLM returns {"score": 0.8} instead of 0.8
+                def safe_float(key):
+                    val = llm_eval.get(key, 0.0)
+                    if isinstance(val, dict):
+                        # Extract 'score' or 'value', defaulting to 0.0 if not found
+                        return float(val.get("score", val.get("value", 0.0)))
+                    try:
+                        return float(val)
+                    except (ValueError, TypeError):
+                        return 0.0
+
+                # Use the helper for all metric fields
+                context_relevance_scores.append(safe_float("context_relevance"))
+                answer_completeness_scores.append(safe_float("answer_completeness"))
+                faithfulness_scores.append(safe_float("faithfulness"))
+                overall_quality_scores.append(safe_float("overall_quality"))
+                
+                evaluation_times.append(safe_float("evaluation_time_ms"))
                 successful_evaluations += 1
             
             # Calculate averages only if we have successful evaluations

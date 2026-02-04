@@ -1,4 +1,4 @@
-"""OpenAI LLM implementation for evaluation and generation."""
+"""OpenAI LLM implementation for evaluation and generation - FIXED."""
 from typing import List, Dict, Any
 import openai
 import json
@@ -56,8 +56,13 @@ Query: {query}
 Retrieved Context:
 {context}
 
-Evaluate based on: context_relevance, answer_completeness, faithfulness (0.0 to 1.0).
-Return ONLY JSON.
+Provide a JSON evaluation with these numeric scores (0.0 to 1.0):
+- context_relevance: How relevant is the retrieved context to the query?
+- answer_completeness: How complete would an answer be based on this context?
+- faithfulness: How well does the context support answering the query?
+- overall_quality: Overall retrieval quality score (average of the above three)
+
+Return ONLY a valid JSON object with all four fields, no other text.
 """
         is_gpt5 = "gpt-5" in self.model
         
@@ -65,7 +70,7 @@ Return ONLY JSON.
             params = {
                 "model": self.model,
                 "messages": [
-                    {"role": "system", "content": "Return only valid JSON."},
+                    {"role": "system", "content": "Return only valid JSON with context_relevance, answer_completeness, faithfulness, and overall_quality fields."},
                     {"role": "user", "content": prompt}
                 ],
                 "response_format": {"type": "json_object"}
@@ -85,12 +90,34 @@ Return ONLY JSON.
             elapsed = timer.stop()
             result = json.loads(response.choices[0].message.content)
             
-            result["evaluation_time_ms"] = elapsed
+            # Ensure all required fields exist
+            result.setdefault("context_relevance", 0.0)
+            result.setdefault("answer_completeness", 0.0)
+            result.setdefault("faithfulness", 0.0)
+            result.setdefault("overall_quality", 0.0)
+            
+            # If overall_quality is missing or 0, calculate it
+            if result["overall_quality"] == 0.0:
+                result["overall_quality"] = (
+                    result["context_relevance"] +
+                    result["answer_completeness"] +
+                    result["faithfulness"]
+                ) / 3.0
+            
+            result["evaluation_time_ms"] = float(elapsed)
             result["model"] = self.model
             return result
         except Exception as e:
             logger.error(f"OpenAI evaluation failed for {self.model}: {str(e)}")
-            return {"error": str(e), "overall_quality": 0.0, "model": self.model}
+            return {
+                "error": str(e),
+                "context_relevance": 0.0,
+                "answer_completeness": 0.0,
+                "faithfulness": 0.0,
+                "overall_quality": 0.0,
+                "model": self.model,
+                "evaluation_time_ms": 0.0
+            }
 
     @property
     def name(self) -> str:

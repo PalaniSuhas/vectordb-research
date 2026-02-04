@@ -10,12 +10,17 @@ class MetricsAggregator:
 
     @staticmethod
     def _ensure_float(val: Any) -> float:
-        """Ensure value is a float, handling error dictionaries gracefully."""
-        # Handle None and dict (error responses from failed LLM evaluations)
-        if val is None or isinstance(val, dict):
+        if val is None:
             return 0.0
+        # If the LLM returned a dict instead of a number
+        if isinstance(val, dict):
+            # Try to find a 'score' or 'value' key, otherwise take the first numeric value
+            return MetricsAggregator._ensure_float(
+                val.get("score", val.get("value", next(iter(val.values())) if val else 0.0))
+            )
         if isinstance(val, (int, float)):
             return float(val)
+        
         if isinstance(val, str):
             cleaned = val.replace("ms", "").strip()
             try:

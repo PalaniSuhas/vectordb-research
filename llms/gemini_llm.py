@@ -48,9 +48,9 @@ Provide a JSON evaluation with these numeric scores (0.0 to 1.0):
 - context_relevance: How relevant is the retrieved context to the query?
 - answer_completeness: How complete would an answer be based on this context?
 - faithfulness: How well does the context support answering the query?
-- overall_quality: Overall retrieval quality score
+- overall_quality: Overall retrieval quality score (average of the above three)
 
-Return ONLY a valid JSON object, no other text."""
+Return ONLY a valid JSON object with all four fields, no other text."""
         
         # Check for Gemini 3 or 2.5 thinking capabilities
         is_thinking_model = any(m in self.model_name for m in ["gemini-3", "gemini-2.5"])
@@ -99,6 +99,14 @@ Return ONLY a valid JSON object, no other text."""
             result.setdefault("answer_completeness", 0.0)
             result.setdefault("faithfulness", 0.0)
             result.setdefault("overall_quality", 0.0)
+            
+            # If overall_quality is missing or 0, calculate it
+            if result["overall_quality"] == 0.0:
+                result["overall_quality"] = (
+                    result["context_relevance"] +
+                    result["answer_completeness"] +
+                    result["faithfulness"]
+                ) / 3.0
             
             result["evaluation_time_ms"] = float(elapsed)
             result["model"] = self.model_name
