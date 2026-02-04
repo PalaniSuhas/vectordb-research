@@ -90,8 +90,7 @@ ALL_LLM_MODELS = {
         "gpt-5.2",
         "gpt-5",
         "gpt-5-mini",
-        "gpt-5-nano",
-        "gpt-5.1-codex-max"
+        "gpt-5-nano"
     ],
     "Gemini": [
         "gemini-3-pro-preview",
@@ -497,7 +496,7 @@ with st.sidebar:
         """)
         
         run_button = st.button(
-            "🚀 Run Full Benchmark",
+            "Run Full Benchmark",
             disabled=st.session_state.running or not openai_key,
             type="primary",
             use_container_width=True
