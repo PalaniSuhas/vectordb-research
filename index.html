@@ -1,109 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RAG Performance Matrix | Executive Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .score-pill { padding: 4px 12px; border-radius: 10px; font-weight: 700; font-size: 0.75rem; border: 1px solid transparent; }
-        .high { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
-        .mid { background: #fffbeb; color: #92400e; border-color: #fde68a; }
-        .low { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
-        .fail { background: #450a0a; color: #ffffff; }
-        .glass-header { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        scroll-behavior: smooth;
+      }
+      .mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+      .score-pill {
+        padding: 4px 12px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.75rem;
+        border: 1px solid transparent;
+      }
+      .high {
+        background: #f0fdf4;
+        color: #166534;
+        border-color: #bbf7d0;
+      }
+      .mid {
+        background: #fffbeb;
+        color: #92400e;
+        border-color: #fde68a;
+      }
+      .low {
+        background: #fef2f2;
+        color: #991b1b;
+        border-color: #fecaca;
+      }
+      .fail {
+        background: #450a0a;
+        color: #ffffff;
+      }
+      .glass-header {
+        background: rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(12px);
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
     </style>
-</head>
-<body class="bg-[#f8fafc] text-slate-900">
-
-    <aside class="fixed left-0 top-0 h-full w-72 bg-slate-900 text-white p-8 hidden xl:block shadow-2xl z-50">
-        <div class="flex items-center gap-3 mb-12">
-            <!-- <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center font-bold">R</div> -->
-            <h2 class="text-2xl font-extrabold tracking-tighter italic text-blue-400">Benchmark Analysis</h2>
+  </head>
+  <body class="bg-[#f8fafc] text-slate-900">
+    <aside
+      class="fixed left-0 top-0 h-full w-72 bg-slate-900 text-white p-8 hidden xl:block shadow-2xl z-50"
+    >
+      <div class="flex items-center gap-3 mb-12">
+        <!-- <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center font-bold">R</div> -->
+        <h2
+          class="text-2xl font-extrabold tracking-tighter italic text-blue-400"
+        >
+          Benchmark Analysis
+        </h2>
+      </div>
+      <nav class="space-y-6">
+        <div>
+          <p
+            class="text-[10px] uppercase font-black text-slate-500 tracking-[0.2em] mb-4"
+          >
+            Jump To Run
+          </p>
+          <div id="side-nav" class="space-y-2"></div>
         </div>
-        <nav class="space-y-6">
-            <div>
-                <p class="text-[10px] uppercase font-black text-slate-500 tracking-[0.2em] mb-4">Jump To Run</p>
-                <div id="side-nav" class="space-y-2"></div>
-            </div>
-            <div class="pt-10 border-t border-slate-800">
-                <p class="text-[10px] uppercase font-black text-slate-500 tracking-[0.2em] mb-4">System Stats</p>
-                <div class="space-y-3 font-mono text-xs text-slate-400">
-                    <p id="total-runs-stat">Runs: --</p>
-                    <p id="total-docs-stat">Docs: --</p>
-                </div>
-            </div>
-        </nav>
+        <div class="pt-10 border-t border-slate-800">
+          <p
+            class="text-[10px] uppercase font-black text-slate-500 tracking-[0.2em] mb-4"
+          >
+            System Stats
+          </p>
+          <div class="space-y-3 font-mono text-xs text-slate-400">
+            <p id="total-runs-stat">Runs: --</p>
+            <p id="total-docs-stat">Docs: --</p>
+          </div>
+        </div>
+      </nav>
     </aside>
 
     <main class="xl:ml-72 p-6 md:p-16 space-y-16">
-        
-        <header class="space-y-10">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-                <div>
-                    <h1 class="text-6xl font-extrabold tracking-[ -0.04em] text-slate-900 leading-tight">Benchmark Summary</h1>
-                    <p class="text-xl text-slate-500 font-medium mt-2 italic">RAG Performance Report</p>
-                </div>
-                <div class="bg-blue-50 border border-blue-100 px-6 py-3 rounded-2xl">
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-1">Source File</p>
-                    <p class="font-mono text-sm font-bold text-blue-900">final_benchmark_results.json</p>
-                </div>
-            </div>
-
-            <div id="kpi-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-        </header>
-
-        <section class="bg-white border border-slate-200 rounded-[3rem] p-10 md:p-14 shadow-2xl shadow-slate-200/50 relative overflow-hidden">
-            <!-- <div class="absolute top-0 right-0 p-10 opacity-[0.03] text-9xl font-black italic">AI.ANALYSIS</div> -->
-            <div class="relative z-10 space-y-8">
-                <h2 class="text-3xl font-black tracking-tight flex items-center gap-4">
-                    <span class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-xl"></span>
-                    Executive LLM Analysis
-                </h2>
-                <div id="analysis-box" class="grid grid-cols-1 gap-8 text-lg leading-relaxed text-slate-700">
-                    </div>
-            </div>
-        </section>
-
-        <div id="runs-root" class="space-y-24">
-            <div class="text-center py-40 animate-pulse">
-                <p class="text-slate-400 font-black tracking-widest text-xl italic uppercase">Parsing Matrix Data...</p>
-            </div>
+      <header class="space-y-10">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6"
+        >
+          <div>
+            <h1
+              class="text-6xl font-extrabold tracking-[ -0.04em] text-slate-900 leading-tight"
+            >
+              Benchmark Summary
+            </h1>
+            <p class="text-xl text-slate-500 font-medium mt-2 italic">
+              RAG Performance Report
+            </p>
+          </div>
+          <div class="bg-blue-50 border border-blue-100 px-6 py-3 rounded-2xl">
+            <p class="text-[10px] font-black text-blue-600 uppercase mb-1">
+              Source File
+            </p>
+            <p class="font-mono text-sm font-bold text-blue-900">
+              final_benchmark_results.json
+            </p>
+          </div>
         </div>
+
+        <div id="kpi-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      </header>
+
+      <section
+        class="bg-white border border-slate-200 rounded-[3rem] p-10 md:p-14 shadow-2xl shadow-slate-200/50 relative overflow-hidden"
+      >
+        <!-- <div class="absolute top-0 right-0 p-10 opacity-[0.03] text-9xl font-black italic">AI.ANALYSIS</div> -->
+        <div class="relative z-10 space-y-8">
+          <h2
+            class="text-3xl font-black tracking-tight flex items-center gap-4"
+          >
+            <span
+              class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-xl"
+            ></span>
+            Executive LLM Analysis
+          </h2>
+          <div
+            id="analysis-box"
+            class="grid grid-cols-1 gap-8 text-lg leading-relaxed text-slate-700"
+          ></div>
+        </div>
+      </section>
+
+      <div id="runs-root" class="space-y-24">
+        <div class="text-center py-40 animate-pulse">
+          <p
+            class="text-slate-400 font-black tracking-widest text-xl italic uppercase"
+          >
+            Parsing Matrix Data...
+          </p>
+        </div>
+      </div>
     </main>
 
     <script>
-        const JSON_SOURCE = 'results/final_benchmark_results.json';
+      const JSON_SOURCE = "results/final_benchmark_results.json";
 
-        async function init() {
-            try {
-                const res = await fetch(JSON_SOURCE);
-                const data = await res.json();
-                renderUI(data);
-            } catch (err) {
-                document.getElementById('runs-root').innerHTML = `
+      async function init() {
+        try {
+          const res = await fetch(JSON_SOURCE);
+          const data = await res.json();
+          renderUI(data);
+        } catch (err) {
+          document.getElementById("runs-root").innerHTML = `
                     <div class="bg-red-50 border-2 border-red-100 p-20 rounded-[3.5rem] text-center max-w-2xl mx-auto">
                         <p class="text-red-900 font-black text-3xl mb-4 tracking-tighter uppercase">Local File Access Required</p>
                         <p class="text-red-600 leading-relaxed font-medium">To load the JSON, please open this file through a local web server (e.g., Live Server) or ensure <b>${JSON_SOURCE}</b> is correctly placed.</p>
                     </div>`;
-            }
         }
+      }
 
-        function renderUI(data) {
-            const sideNav = document.getElementById('side-nav');
-            const kpiGrid = document.getElementById('kpi-grid');
-            const analysisBox = document.getElementById('analysis-box');
-            const runsRoot = document.getElementById('runs-root');
+      function renderUI(data) {
+        const sideNav = document.getElementById("side-nav");
+        const kpiGrid = document.getElementById("kpi-grid");
+        const analysisBox = document.getElementById("analysis-box");
+        const runsRoot = document.getElementById("runs-root");
 
-            // 1. Map Global Summary KPIs
-            const s = data.summary;
-            kpiGrid.innerHTML = `
+        // 1. Map Global Summary KPIs
+        const s = data.summary;
+        kpiGrid.innerHTML = `
                 <div class="bg-slate-900 p-8 rounded-[2rem] text-white shadow-lg">
                     <p class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-4">Best Quality</p>
                     <h3 class="text-2xl font-bold italic leading-tight">${s.best_overall_quality.llm}</h3>
@@ -120,7 +195,7 @@
                 </div>
                 <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm">
                     <p class="text-[10px] font-black text-purple-600 uppercase tracking-widest mb-4">Fastest Indexing</p>
-                    <h3 class="text-2xl font-bold leading-tight italic">${(s.fastest_indexing.time_ms/1000).toFixed(2)}s</h3>
+                    <h3 class="text-2xl font-bold leading-tight italic">${(s.fastest_indexing.time_ms / 1000).toFixed(2)}s</h3>
                     <p class="text-xs text-slate-400 font-mono mt-2 truncate">${s.fastest_indexing.configuration}</p>
                     <div class="mt-6 w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                         <div class="bg-purple-500 h-full w-4/5"></div>
@@ -128,69 +203,76 @@
                 </div>
             `;
 
-            // 2. Clean Narrative Analysis (No Markdown Symbols)
-            analysisBox.innerHTML = data.llm_analysis
-                .replace(/###|##|\*\*/g, '') // Remove formatting artifacts
-                .split('\n\n')
-                .map(p => `<p class="border-l-4 border-slate-100 pl-6 hover:border-blue-600 transition-all font-light">${p}</p>`)
-                .join('');
+        // 2. Clean Narrative Analysis (No Markdown Symbols)
+        analysisBox.innerHTML = data.llm_analysis
+          .replace(/###|##|\*\*/g, "") // Remove formatting artifacts
+          .split("\n\n")
+          .map(
+            (p) =>
+              `<p class="border-l-4 border-slate-100 pl-6 hover:border-blue-600 transition-all font-light">${p}</p>`,
+          )
+          .join("");
 
-            // 3. Map Run Details
-            document.getElementById('total-runs-stat').innerText = `Runs: ${data.total_runs}`;
-            document.getElementById('total-docs-stat').innerText = `Total Docs: ${data.benchmark_runs[0].indexing_metrics.document_count}`;
-            
-            runsRoot.innerHTML = '';
-            data.benchmark_runs.forEach((run, i) => {
-                const id = `run-${i}`;
-                const config = run.configuration;
-                
-                sideNav.innerHTML += `
+        // 3. Map Run Details
+        document.getElementById("total-runs-stat").innerText =
+          `Runs: ${data.total_runs}`;
+        document.getElementById("total-docs-stat").innerText =
+          `Total Docs: ${data.benchmark_runs[0].indexing_metrics.document_count}`;
+
+        runsRoot.innerHTML = "";
+        data.benchmark_runs.forEach((run, i) => {
+          const id = `run-${i}`;
+          const config = run.configuration;
+
+          sideNav.innerHTML += `
                     <a href="#${id}" class="group flex items-center justify-between text-sm text-slate-400 hover:text-white transition-all py-2">
-                        <span class="truncate pr-4">• Run ${i+1}: ${config.vector_database}</span>
+                        <span class="truncate pr-4">• Run ${i + 1}: ${config.vector_database}</span>
                         <span class="opacity-0 group-hover:opacity-100 text-[10px] font-black text-blue-500 italic">GO</span>
                     </a>
                 `;
 
-                const runSection = document.createElement('section');
-                runSection.id = id;
-                runSection.className = "space-y-10";
+          const runSection = document.createElement("section");
+          runSection.id = id;
+          runSection.className = "space-y-10";
 
-                // Model Averages Logic
-                let avgModelRows = "";
-                Object.entries(run.llm_evaluation_scores).forEach(([name, scores]) => {
-                    avgModelRows += `
+          // Model Averages Logic
+          let avgModelRows = "";
+          Object.entries(run.llm_evaluation_scores).forEach(
+            ([name, scores]) => {
+              avgModelRows += `
                         <tr class="border-b border-slate-50 transition-colors hover:bg-slate-50">
                             <td class="py-5 px-6 font-bold text-slate-700 text-sm italic underline decoration-slate-200 underline-offset-4">${name}</td>
-                            <td class="py-5 px-6 text-center"><span class="score-pill ${scores.avg_overall_quality > 0.9 ? 'high' : 'mid'}">${scores.avg_overall_quality.toFixed(3)}</span></td>
-                            <td class="py-5 px-6 text-center font-mono text-xs text-slate-400 font-bold tracking-widest">${(scores.avg_answer_completeness*100).toFixed(0)}%</td>
-                            <td class="py-5 px-6 text-right font-mono text-xs text-slate-400">${(scores.avg_evaluation_time_ms/1000).toFixed(1)}s</td>
+                            <td class="py-5 px-6 text-center"><span class="score-pill ${scores.avg_overall_quality > 0.9 ? "high" : "mid"}">${scores.avg_overall_quality.toFixed(3)}</span></td>
+                            <td class="py-5 px-6 text-center font-mono text-xs text-slate-400 font-bold tracking-widest">${(scores.avg_answer_completeness * 100).toFixed(0)}%</td>
+                            <td class="py-5 px-6 text-right font-mono text-xs text-slate-400">${(scores.avg_evaluation_time_ms / 1000).toFixed(1)}s</td>
                         </tr>
                     `;
-                });
+            },
+          );
 
-                // Per-Question Detail Mapping
-                let questionCards = "";
-                run.detailed_query_results.forEach(q => {
-                    let evaluations = "";
-                    Object.entries(q.evaluations).forEach(([llm, ev]) => {
-                        const err = ev.error ? true : false;
-                        evaluations += `
+          // Per-Question Detail Mapping
+          let questionCards = "";
+          run.detailed_query_results.forEach((q) => {
+            let evaluations = "";
+            Object.entries(q.evaluations).forEach(([llm, ev]) => {
+              const err = ev.error ? true : false;
+              evaluations += `
                             <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-md transition-all">
                                 <span class="text-xs font-black text-slate-500 uppercase tracking-tighter">${llm}</span>
                                 <div class="flex items-center gap-6">
                                     <div class="text-center">
                                         <p class="text-[8px] uppercase font-black text-slate-300">Relevance</p>
-                                        <p class="text-xs font-bold text-slate-400">${err ? '-' : ev.context_relevance.toFixed(2)}</p>
+                                        <p class="text-xs font-bold text-slate-400">${err ? "-" : ev.context_relevance.toFixed(2)}</p>
                                     </div>
-                                    <span class="score-pill ${err ? 'error-state' : (ev.overall_quality > 0.9 ? 'high' : 'mid')}">
-                                        ${err ? '503 ERR' : (ev.overall_quality*100).toFixed(1) + '%'}
+                                    <span class="score-pill ${err ? "error-state" : ev.overall_quality > 0.9 ? "high" : "mid"}">
+                                        ${err ? "503 ERR" : (ev.overall_quality * 100).toFixed(1) + "%"}
                                     </span>
                                 </div>
                             </div>
                         `;
-                    });
+            });
 
-                    questionCards += `
+            questionCards += `
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 space-y-6">
                             <div class="flex justify-between items-start">
                                 <p class="bg-slate-900 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">${q.query_id}</p>
@@ -200,11 +282,11 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">${evaluations}</div>
                         </div>
                     `;
-                });
+          });
 
-                runSection.innerHTML = `
+          runSection.innerHTML = `
                     <div class="bg-slate-900 rounded-[3.5rem] p-10 md:p-16 text-white shadow-2xl relative overflow-hidden">
-                        <div class="absolute -right-10 -top-10 text-[15rem] font-black italic text-white opacity-[0.03]">0${i+1}</div>
+                        <div class="absolute -right-10 -top-10 text-[15rem] font-black italic text-white opacity-[0.03]">0${i + 1}</div>
                         <div class="relative z-10 flex flex-col lg:flex-row justify-between gap-12">
                             <div class="space-y-6 max-w-2xl">
                                 <span class="px-4 py-1 bg-blue-600 rounded-full text-xs font-black uppercase tracking-widest">Configuration Matrix</span>
@@ -222,7 +304,7 @@
                                 </div>
                                 <div class="bg-slate-800 p-6 rounded-[2rem] border border-slate-700 text-center min-w-[160px]">
                                     <p class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">Total Indexing</p>
-                                    <p class="text-3xl font-black text-purple-400 tracking-tighter italic">${(run.indexing_metrics.total_time_ms/1000).toFixed(1)}s</p>
+                                    <p class="text-3xl font-black text-purple-400 tracking-tighter italic">${(run.indexing_metrics.total_time_ms / 1000).toFixed(1)}s</p>
                                 </div>
                             </div>
                         </div>
@@ -249,11 +331,11 @@
                         </div>
                     </div>
                 `;
-                runsRoot.appendChild(runSection);
-            });
-        }
+          runsRoot.appendChild(runSection);
+        });
+      }
 
-        init();
+      init();
     </script>
-</body>
+  </body>
 </html>
