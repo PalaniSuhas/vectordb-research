@@ -27,13 +27,7 @@ class ChromaVectorDB:
         )
         logger.info(f"ChromaDB collection '{collection_name}' created (dim: {dimension})")
 
-    def insert_documents(
-        self,
-        doc_ids: List[str],
-        embeddings: List[List[float]],
-        texts: List[str],
-        metadatas: List[Dict[str, Any]]
-    ) -> float:
+    def insert_documents(self, doc_ids, embeddings, texts, metadatas) -> float:
         timer = Timer()
         timer.start()
         
@@ -44,18 +38,14 @@ class ChromaVectorDB:
                 documents=texts,
                 metadatas=metadatas
             )
-            elapsed = timer.stop()  # This is a float
+            elapsed = timer.stop()
             logger.metric("ChromaDB_indexing_time", f"{elapsed:.2f}ms")
-            return float(elapsed) 
+            return float(elapsed)  # ← ENSURE THIS IS float()
         except Exception as e:
             logger.error(f"ChromaDB insert failed: {str(e)}")
             raise
 
-    def search(
-        self,
-        query_embedding: List[float],
-        top_k: int = 3
-    ) -> Tuple[List[str], List[str], List[float], float]:
+    def search(self, query_embedding, top_k=3) -> Tuple[List[str], List[str], List[float], float]:
         timer = Timer()
         timer.start()
         
@@ -72,7 +62,7 @@ class ChromaVectorDB:
             distances = results.get('distances', [[]])[0]
             scores = [max(0.0, 1.0 - dist) for dist in distances]
             
-            return doc_ids, texts, scores, float(elapsed)
+            return doc_ids, texts, scores, float(elapsed)  # ← ENSURE THIS IS float()
         except Exception as e:
             logger.error(f"ChromaDB search failed: {str(e)}")
             raise

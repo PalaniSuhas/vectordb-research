@@ -22,7 +22,7 @@ class Timer:
             raise RuntimeError("Timer was never started")
         self.end_time = time.perf_counter()
         self.elapsed_ms = (self.end_time - self.start_time) * 1000
-        return self.elapsed_ms
+        return float(self.elapsed_ms)
     
     def reset(self) -> None:
         """Reset the timer."""

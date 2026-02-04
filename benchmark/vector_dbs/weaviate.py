@@ -42,7 +42,8 @@ class WeaviateVectorDB:
                     self._fallback_embeddings.append(emb)
             
             elapsed = timer.stop()
-            return float(elapsed)
+            logger.metric("Weaviate_indexing_time", f"{elapsed:.2f}ms")
+            return float(elapsed)  # ← ENSURE THIS IS float()
         except Exception as e:
             logger.error(f"Weaviate insert failed: {str(e)}")
             raise
@@ -53,7 +54,8 @@ class WeaviateVectorDB:
         try:
             if self.collection:
                 res = self.collection.query.near_vector(
-                    near_vector=query_embedding, limit=top_k, 
+                    near_vector=query_embedding, 
+                    limit=top_k, 
                     return_metadata=MetadataQuery(distance=True)
                 )
                 doc_ids, texts, scores = [], [], []
@@ -65,23 +67,30 @@ class WeaviateVectorDB:
             else:
                 import numpy as np
                 q_vec = np.array(query_embedding)
-                sims = [np.dot(q_vec, e)/(np.linalg.norm(q_vec)*np.linalg.norm(e)) for e in self._fallback_embeddings]
+                sims = [np.dot(q_vec, e)/(np.linalg.norm(q_vec)*np.linalg.norm(e)) 
+                        for e in self._fallback_embeddings]
                 top_idx = np.argsort(sims)[-top_k:][::-1]
                 doc_ids = [self._fallback_storage[i]["doc_id"] for i in top_idx]
                 texts = [self._fallback_storage[i]["text"] for i in top_idx]
                 scores = [sims[i] for i in top_idx]
             
             elapsed = timer.stop()
-            return doc_ids, texts, scores, float(elapsed)
+            logger.metric("Weaviate_search_time", f"{elapsed:.2f}ms")
+            return doc_ids, texts, scores, float(elapsed)  # ← ENSURE THIS IS float()
         except Exception as e:
             logger.error(f"Weaviate search failed: {str(e)}")
             raise
 
     def get_stats(self) -> Dict[str, Any]:
-        return {"document_count": len(self._fallback_storage) if not self.collection else "N/A"}
+        if self.collection:
+            # Try to get actual count if possible
+            return {"document_count": "N/A", "dimension": self.dimension}
+        else:
+            return {"document_count": len(self._fallback_storage), "dimension": self.dimension}
 
     def cleanup(self) -> None:
-        if self.client: self.client.close()
+        if self.client: 
+            self.client.close()
 
     @property
     def name(self) -> str:
