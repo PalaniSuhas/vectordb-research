@@ -1,11 +1,2158 @@
 {
-  "benchmark_runs": [],
-  "total_runs": 0,
+  "benchmark_runs": [
+    {
+      "configuration": {
+        "embedding_model": "text-embedding-3-large",
+        "vector_database": "ChromaDB",
+        "embedding_dimension": 3072
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 44363.719333006884,
+        "indexing_time_ms": 939.3428330076858,
+        "total_time_ms": 45303.06216601457,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 310.4621831997065,
+        "avg_vector_search_time_ms": 5.925083401962183,
+        "avg_total_retrieval_time_ms": 316.38726660166867,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.796,
+          "avg_answer_completeness": 0.686,
+          "avg_faithfulness": 0.8859999999999999,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 5364.969366599689,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.9400000000000001,
+          "avg_answer_completeness": 0.8960000000000001,
+          "avg_faithfulness": 0.9719999999999999,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 22714.02320000052,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.8960000000000001,
+          "avg_answer_completeness": 0.78,
+          "avg_faithfulness": 0.9040000000000001,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 12818.255450198194,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.8560000000000001,
+          "avg_answer_completeness": 0.748,
+          "avg_faithfulness": 0.884,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 11629.052100199624,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.99,
+          "avg_answer_completeness": 0.93,
+          "avg_faithfulness": 0.9800000000000001,
+          "avg_overall_quality": 0.97,
+          "avg_evaluation_time_ms": 14725.059991396847,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.58,
+          "avg_answer_completeness": 0.54,
+          "avg_faithfulness": 0.6,
+          "avg_overall_quality": 0.57,
+          "avg_evaluation_time_ms": 3644.044141602353,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.9800000000000001,
+          "avg_answer_completeness": 0.9099999999999999,
+          "avg_faithfulness": 1.0,
+          "avg_overall_quality": 0.95,
+          "avg_evaluation_time_ms": 7649.711216602009,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.5599999999999999,
+          "avg_answer_completeness": 0.45,
+          "avg_faithfulness": 0.5599999999999999,
+          "avg_overall_quality": 0.526,
+          "avg_evaluation_time_ms": 6757.406241600984,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.96,
+          "avg_answer_completeness": 0.89,
+          "avg_faithfulness": 0.9800000000000001,
+          "avg_overall_quality": 0.93,
+          "avg_evaluation_time_ms": 15562.741233201814,
+          "total_queries_evaluated": 5
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.68,
+              "answer_completeness": 0.52,
+              "faithfulness": 0.78,
+              "evaluation_time_ms": 6392.022625004756,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.92,
+              "answer_completeness": 0.88,
+              "faithfulness": 0.95,
+              "justification": "The passages define rational agents, distinguish rationality from omniscience/perfection, and frame intelligence as acting rationally (including information gathering and learning). This supports concluding that perfect rationality implies intelligence in this framework, and that an 'intelligent but irrational' agent is inconsistent with it. Minor gap: no standalone definition of intelligence beyond the rational-agent framing.",
+              "evidence_docs": [
+                "Document 1",
+                "Document 2",
+                "Document 3"
+              ],
+              "evaluation_time_ms": 38698.04670799931,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.92,
+              "notes": "The retrieved excerpts (Russell & Norvig) directly discuss the definition of rational agents, the distinction between rationality and omniscience/perfection, and the relation between rational thought and intelligent behavior. This makes the context highly relevant and faithful to the query, but it does not provide a single explicit yes/no verdict; it supports nuanced conclusions (rationality \u2260 perfect intelligence, and intelligence can coexist with irrational actions under certain priors/performance measures), so completeness is slightly lower.",
+              "evaluation_time_ms": 14419.834875006927,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.92,
+              "answer_completeness": 0.88,
+              "faithfulness": 0.93,
+              "evaluation_time_ms": 22143.011084001046,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 22026.583874991047,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-3-flash-preview",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 7883.713500006706,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.9,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 17513.227499992354,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 18192.105167006957,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 182.34733400458936,
+            "vector_search_time_ms": 10.30695901135914,
+            "total_retrieval_time_ms": 192.6542930159485,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.72,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 3001.7584579909453,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.96,
+              "answer_completeness": 0.89,
+              "faithfulness": 0.99,
+              "evaluation_time_ms": 15564.291250004317,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "justification": {
+                "context_relevance": "The retrieved passages explicitly discuss when and why prior (symbolic) knowledge helps learning: explanation-based learning, relevance-based learning, ILP, few-example learning, relational representations, and domain successes (biology, NLP). These are directly relevant to the query.",
+                "answer_completeness": "The documents cover the main reasons symbolic approaches can outperform data-driven methods (use of background knowledge, faster learning from fewer examples, relational expressivity, interpretability, conversion of first principles into efficient rules) and give domain examples. They lack some modern contrasts (e.g., large-scale deep learning trade-offs) and explicit, consolidated phrasing that directly contrasts all situations.",
+                "faithfulness": "Ratings reflect that the retrieved text supports the claims without apparent contradiction; conclusions drawn would be faithful to the source material (EBL, RBL, ILP benefits and examples)."
+              },
+              "evaluation_time_ms": 16282.829333998961,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.92,
+              "answer_completeness": 0.68,
+              "faithfulness": 0.86,
+              "evaluation_time_ms": 8498.508208009298,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 13228.244458005065,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 7361.197458012612,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 6859.316750007565,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-2.5-flash-lite",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 15456.85245799541,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 362.3666249914095,
+            "vector_search_time_ms": 4.809082995052449,
+            "total_retrieval_time_ms": 367.17570798646193,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.74,
+              "faithfulness": 0.93,
+              "evaluation_time_ms": 3276.463165995665,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.96,
+              "evaluation_time_ms": 24825.211292001768,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.9,
+              "comment": "The retrieved passages directly support the core claims: de Finetti's Dutch-book/coherence argument and Cox's theorem are cited as reasons probability is the coherent framework, and practical limits are documented (subjective priors, need for conditional-independence to factor joints, scaling/intractability of full joint tables, vulnerability to small/unrepresentative samples, and historical/philosophical debates). Minor gaps remain (e.g., limited explicit discussion of computational complexity beyond table size, model misspecification risks, and comparisons to alternative uncertainty frameworks).",
+              "evaluation_time_ms": 12449.527499993565,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 10447.725207995973,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.95,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 13442.149165988667,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 4986.8641670036595,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 6355.760332997306,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 6546.611875004601,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 14848.977624991676,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 405.71441600332037,
+            "vector_search_time_ms": 4.792083011125214,
+            "total_retrieval_time_ms": 410.5064990144456,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.74,
+              "answer_completeness": 0.66,
+              "faithfulness": 0.91,
+              "justification": {
+                "context_relevance": "The retrieved passages directly address agent architectures that mix reflexes, deliberative planning/search, and learning (Doc 1), include material on search/planning limits and hierarchical structure (Doc 3), and discuss controlling deliberation/search via anytime algorithms and metareasoning (Doc 2). Some parts (e.g., compute trends/quantum) are off-topic.",
+                "answer_completeness": "The context provides partial guidance on when learning is preferred (lots of data, changing environments, insufficient designer knowledge) and implies when planning/search is needed (planning ahead, long-horizon/hierarchical action selection, real-time constraints). It also mentions high-level integration directions (symbolic+connectionist, hierarchical RL, metareasoning), but lacks a crisp, explicit set of criteria comparing planning/search vs learning and detailed combination strategies (e.g., model-based RL, learned heuristics, learned world models).",
+                "faithfulness": "Statements supported by the context (planning for deliberation, learning for data-rich/changing domains, hybrid symbolic/connectionist approaches, hierarchical RL, anytime search/metareasoning). No strong unsupported claims are required to answer based on these excerpts."
+              },
+              "evaluation_time_ms": 9131.273542006966,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.88,
+              "faithfulness": 0.96,
+              "evaluation_time_ms": 16570.353792005335,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.9,
+              "comments": "The retrieved passages are highly relevant: they state when planning/search is preferable (time-critical reflex vs deliberative needs, long-term structured decisions) and when learning is preferable (lots of data, changing environments, designer ignorance). They also describe ways to combine approaches (hierarchical reinforcement learning, inverse reinforcement learning, probabilistic programming + deep learning, metareasoning, anytime algorithms). Coverage is strong on high-level principles but misses some concrete modern algorithmic examples and practical integration patterns (e.g., model-based RL, planning with learned models, AlphaZero-style MCTS+networks), so completeness is not perfect.",
+              "evaluation_time_ms": 10696.331874991301,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.87,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.93,
+              "evaluation_time_ms": 9987.336291989777,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 14586.423540997203,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 5872.159082995495,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 8828.741582998191,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.95,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 9727.191833007964,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 15975.421000010101,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 300.79929099883884,
+            "vector_search_time_ms": 5.358624999644235,
+            "total_retrieval_time_ms": 306.1579159984831,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.84,
+              "answer_completeness": 0.79,
+              "faithfulness": 0.91,
+              "evaluation_time_ms": 5023.329042000114,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.97,
+              "answer_completeness": 0.93,
+              "faithfulness": 1.0,
+              "evaluation_time_ms": 17912.21295799187,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.65,
+              "faithfulness": 0.9,
+              "justification": {
+                "context_relevance": "The three retrieved passages directly discuss the rational-agent/standard-model, value-alignment problems, specification gaming, apprenticeship and inverse reinforcement learning, and mitigation ideas (low-impact, penalties, testing). These are highly relevant to the query.",
+                "answer_completeness": "The excerpts identify core limitations of the rational-agent framework (difficulty of fully specifying objectives, specification gaming, unintended side effects) and sketch partial remedies (IRL, low-impact objectives, testing). They do not, however, cover many important missing elements for a full answer: normative/accountability frameworks, multi-stakeholder and cross-cultural value aggregation, corrigibility and oversight mechanisms, robustness to distributional shift, interpretability and verification techniques, socio-political/regulatory responses, and operationalization of moral uncertainty. Thus the retrieval is useful but incomplete.",
+                "faithfulness": "The rating reflects that conclusions drawn from the retrieved text (that the rational-agent framework is necessary but insufficient, and that specification/gaming and incomplete objectives are central problems) are well supported by the passages. Because some broader claims would require sources not present here, the score is high but not perfect."
+              },
+              "evaluation_time_ms": 10242.753667000216,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.65,
+              "faithfulness": 0.8,
+              "evaluation_time_ms": 7068.679709002026,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 10341.898917002254,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-3-flash-preview",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 8321.023917000275,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-2.5-flash-lite",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 13340.349916004925,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 301.0832500003744,
+            "vector_search_time_ms": 4.358666992629878,
+            "total_retrieval_time_ms": 305.44191699300427,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "text-embedding-3-large",
+        "embedding_dimension": 3072,
+        "vector_db": "ChromaDB",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 3072,
+          "metric": "cosine"
+        }
+      }
+    },
+    {
+      "configuration": {
+        "embedding_model": "bge-large-en-v1.5",
+        "vector_database": "Weaviate",
+        "embedding_dimension": 1024
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 83775.13608300069,
+        "indexing_time_ms": 3.3516660041641444,
+        "total_time_ms": 83778.48774900485,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 13.176599799771793,
+        "avg_vector_search_time_ms": 22.721799998544157,
+        "avg_total_retrieval_time_ms": 35.89839979831595,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.768,
+          "avg_answer_completeness": 0.53,
+          "avg_faithfulness": 0.892,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 4787.344199998188,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.884,
+          "avg_answer_completeness": 0.732,
+          "avg_faithfulness": 0.932,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 25839.781433402095,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.8460000000000001,
+          "avg_answer_completeness": 0.5700000000000001,
+          "avg_faithfulness": 0.834,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 12406.419600002118,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.788,
+          "avg_answer_completeness": 0.634,
+          "avg_faithfulness": 0.818,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 11036.350050003966,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.85,
+          "avg_answer_completeness": 0.7,
+          "avg_faithfulness": 0.9400000000000001,
+          "avg_overall_quality": 0.79,
+          "avg_evaluation_time_ms": 18920.698833401548,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.85,
+          "avg_answer_completeness": 0.72,
+          "avg_faithfulness": 0.9099999999999999,
+          "avg_overall_quality": 0.8099999999999999,
+          "avg_evaluation_time_ms": 7043.564533200697,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.8300000000000001,
+          "avg_answer_completeness": 0.7100000000000001,
+          "avg_faithfulness": 0.9800000000000001,
+          "avg_overall_quality": 0.78,
+          "avg_evaluation_time_ms": 8448.349108398543,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.64,
+          "avg_answer_completeness": 0.43999999999999995,
+          "avg_faithfulness": 0.76,
+          "avg_overall_quality": 0.5599999999999999,
+          "avg_evaluation_time_ms": 5099.430916798883,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.86,
+          "avg_answer_completeness": 0.6,
+          "avg_faithfulness": 0.72,
+          "avg_overall_quality": 0.6900000000000001,
+          "avg_evaluation_time_ms": 15024.26989999949,
+          "total_queries_evaluated": 5
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.52,
+              "faithfulness": 0.88,
+              "evaluation_time_ms": 5489.932374999626,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.86,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 34348.18524999719,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.9,
+              "notes": "The retrieved documents are highly relevant (they directly discuss rational agents, the relation of rationality to intelligence, and bounded/limited rationality). They partially answer the query: they show perfect rationality is often infeasible and that rationality is the normative basis for defining intelligence, implying intelligence does not require perfect rationality. However they do not explicitly state whether an otherwise intelligent agent can act irrationally in all senses, so completeness is limited.",
+              "evaluation_time_ms": 15673.215458009508,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.75,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 12142.775375003112,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 19780.78966701287,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.95,
+              "overall_quality": 0.88,
+              "evaluation_time_ms": 7695.913375006057,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 11369.331958994735,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.9,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 8090.980708002462,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 12898.498000009567,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 13.676957998541184,
+            "vector_search_time_ms": 21.928834001300856,
+            "total_retrieval_time_ms": 35.60579199984204,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.62,
+              "answer_completeness": 0.35,
+              "faithfulness": 0.9,
+              "rationale": {
+                "context_relevance": "The retrieved passages discuss symbolic/knowledge-based learning (logical theories, prior knowledge, EBL, rule learning) and contrast with purely inductive/data-driven approaches, which is broadly related to when symbolic methods can help. However, they do not directly enumerate concrete situations (e.g., low-data regimes, need for guarantees, compositional generalization) or give a focused 'when and why' comparison.",
+                "answer_completeness": "The context provides partial 'why' (use of prior knowledge, logical inference, limitations of pure induction; some hints about brittleness/uncertainty in expert systems), but lacks a clear, comprehensive set of situations where symbolic approaches outperform and the specific mechanisms (constraints, sample efficiency, interpretability, verifiability) tied to those situations.",
+                "faithfulness": "What is present is internally consistent and supports limited claims (symbolic methods leverage prior knowledge; logical inference can assist classification/learning; expert systems struggled with uncertainty/learning). There is little risk of contradiction, but the material is insufficient to support a full answer without adding external information."
+              },
+              "evaluation_time_ms": 7908.384707989171,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.92,
+              "notes": [
+                "Doc 3 and Doc 1 directly discuss learning with prior knowledge, logical representations, and EBL\u2014highly relevant to when symbolic methods help.",
+                "Doc 2 provides historical contrast between symbolic and connectionist approaches; relevant background but less targeted to the specific question.",
+                "The context supports claims that symbolic approaches excel when rich prior knowledge can be encoded and leveraged (e.g., logical inference, EBL, structured domains), but it does not comprehensively enumerate all situations (e.g., data scarcity, safety/interpretability, hard constraints) explicitly.",
+                "Information present is accurate and would support a faithful answer emphasizing the role of prior knowledge and logical inference; however, some common scenarios are only implicitly inferable."
+              ],
+              "evaluation_time_ms": 26192.22041699686,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.5,
+              "faithfulness": 0.82,
+              "notes": {
+                "context_relevance": "Retrieved documents discuss prior/knowledge-based learning, expert systems, and logical formulations of learning \u2014 broadly relevant to the query about when symbolic approaches excel.",
+                "answer_completeness": "The snippets provide partial coverage (advantages of priorknowledge, brittleness of expert systems, EBL, logical inference) but do not enumerate a full set of situations (e.g., small-data, safety-critical, explainability, compositional reasoning) or detailed comparative evidence.",
+                "faithfulness": "Scoring reflects that the documents legitimately support the cited points (use of prior knowledge, logical inference benefits, limitations of pure expert systems), so inferred conclusions are consistent with the sources but extend beyond explicit statements."
+              },
+              "evaluation_time_ms": 9933.275208997657,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.87,
+              "answer_completeness": 0.62,
+              "faithfulness": 0.79,
+              "evaluation_time_ms": 8705.379374994664,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.95,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 24735.306041999138,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.55,
+              "faithfulness": 0.9,
+              "overall_quality": 0.7,
+              "evaluation_time_ms": 8047.734958003275,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.3,
+              "answer_completeness": 0.1,
+              "faithfulness": 0.9,
+              "overall_quality": 0.2,
+              "evaluation_time_ms": 10532.63929199602,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.9,
+              "overall_quality": 0.7,
+              "evaluation_time_ms": 8746.918916993309,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.5,
+              "overall_quality": 0.4,
+              "evaluation_time_ms": 18699.831083999015,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 12.590708996867761,
+            "vector_search_time_ms": 22.03837499837391,
+            "total_retrieval_time_ms": 34.62908399524167,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.92,
+              "evaluation_time_ms": 3122.5125000055414,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.86,
+              "faithfulness": 0.98,
+              "justification": {
+                "context_relevance": "Docs 1\u20133 directly cover axiomatic and representation arguments for probability as the coherent calculus (Kolmogorov axioms; de Finetti/Dutch book coherence; Cox/Jaynes results, with Halpern\u2019s critique and Horn\u2019s fix) and survey alternatives (certainty factors, Dempster\u2013Shafer, fuzzy, possibility) and their relation to probability.",
+                "answer_completeness": "The materials support explaining why probability is uniquely coherent (Cox/de Finetti/axioms) and list practical concerns and mitigations: perceived need for precise probabilities (countered by qualitative and second-order probabilities), early practical issues in AI (lack of conditional independence formalisms, large tables, vulnerability to small/unrepresentative data), and scope limits (vagueness better handled by fuzzy logic). They do not detail other common practical limits such as computational intractability of exact inference and modern approximate methods.",
+                "faithfulness": "All key points (coherence arguments, historical experience, critiques/nuances, and scope distinctions vs fuzzy/DS) are explicitly supported by the retrieved text, so an answer grounded in it would be accurate."
+              },
+              "evaluation_time_ms": 31796.495875008986,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.9,
+              "justification": {
+                "context_relevance": "The retrieved documents directly address why probability is viewed as the coherent framework (references to Kolmogorov, Cox, de Finetti, Bayes) and present alternative approaches and practical difficulties, so they are highly relevant to the query.",
+                "answer_completeness": "The excerpts cover key supporting arguments (Cox's result, axiomatic foundations) and several practical limitations (need for priors, difficulty specifying probabilities, representation and computational issues, historical failures), but they omit some commonly cited practical limits such as computational intractability for large models, sensitivity to model misspecification and priors in practice, and treatments like imprecise probabilities or robustness analyses. Thus coverage is good but not exhaustive.",
+                "faithfulness": "The scores reflect that the documents faithfully report the theoretical claims (Cox, Kolmogorov, de Finetti) and practical problems (specification, representation, independence assumptions, historical system shortcomings). The assessment does not infer claims beyond what the texts support."
+              },
+              "evaluation_time_ms": 12180.031875002896,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.85,
+              "evaluation_time_ms": 8089.712625005632,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 13658.575583991478,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.97,
+              "evaluation_time_ms": 6517.380166988005,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 6242.425916003413,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-2.5-flash-lite",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 15770.108915996389,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 13.03800000459887,
+            "vector_search_time_ms": 21.416999996290542,
+            "total_retrieval_time_ms": 34.45500000088941,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.72,
+              "answer_completeness": 0.48,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 2868.343374997494,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.56,
+              "faithfulness": 0.94,
+              "evaluation_time_ms": 20171.496000009938,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.45,
+              "faithfulness": 0.65,
+              "rationale": "Docs 1 and 3 provide core material on planning/search (when lookahead/search is needed, handling determinism, partial observability, online search). Doc 2 mentions planning history and points to reinforcement learning (Chapter 23) but does not present criteria for preferring planning over learning or detailed hybrid methods. The retrieved passages are relevant to parts of the question but are incomplete for a full prescriptive answer; using them would yield generally faithful but partial conclusions and would require additional sources for concrete combination strategies and decision criteria.",
+              "evaluation_time_ms": 12289.459999999963,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.72,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.72,
+              "evaluation_time_ms": 14435.859292003443,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.9,
+              "overall_quality": 0.4,
+              "evaluation_time_ms": 22672.00895800488,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.65,
+              "answer_completeness": 0.45,
+              "faithfulness": 0.7,
+              "overall_quality": 0.55,
+              "evaluation_time_ms": 7059.681625003577,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 7030.899874996976,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.2,
+              "faithfulness": 1.0,
+              "overall_quality": 0.4,
+              "evaluation_time_ms": 3328.8660420075757,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.1,
+              "faithfulness": 0.1,
+              "overall_quality": 0.2,
+              "evaluation_time_ms": 14958.120666997274,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 13.296040997374803,
+            "vector_search_time_ms": 23.752374996547587,
+            "total_retrieval_time_ms": 37.04841599392239,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.52,
+              "faithfulness": 0.86,
+              "evaluation_time_ms": 4547.548041999107,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.68,
+              "faithfulness": 0.92,
+              "evaluation_time_ms": 16690.509624997503,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.9,
+              "comments": {
+                "context_relevance": "The retrieved passages directly address the rational-agent/standard-model, performance measures, objective specification problems (King Midas example), and note that the standard model may be inadequate for real-world/value-laden tasks\u2014highly relevant to the query about ethics and value alignment.",
+                "answer_completeness": "The excerpts identify the core limitation (difficulty of fully specifying objectives, consequentialist framing, mis-specified rewards, and limited rationality), but they do not cover many missing elements needed for a full answer\u2014e.g., approaches like value learning, corrigibility, inverse reinforcement learning, normative uncertainty, multi-stakeholder aggregation, social and institutional governance, robustness to distributional shift, or concrete safety mechanisms\u2014so the coverage is partial.",
+                "faithfulness": "The scores and critiques that would be drawn from these documents (that mis-specified objectives cause perverse behavior and that the standard model assumes fully specified objectives) are well supported by the retrieved text; the passages are quoted faithfully and used appropriately."
+              },
+              "evaluation_time_ms": 11956.115458000568,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.5,
+              "faithfulness": 0.83,
+              "evaluation_time_ms": 11808.023583012982,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 13756.813915999373,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 5897.112541002571,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 7066.44850000157,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 5330.388916991069,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 12794.790832995204,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 13.281291001476347,
+            "vector_search_time_ms": 24.472416000207886,
+            "total_retrieval_time_ms": 37.75370700168423,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "bge-large-en-v1.5",
+        "embedding_dimension": 1024,
+        "vector_db": "Weaviate-Fallback",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 1024,
+          "mode": "fallback_numpy"
+        }
+      }
+    },
+    {
+      "configuration": {
+        "embedding_model": "all-mpnet-base-v2",
+        "vector_database": "ChromaDB",
+        "embedding_dimension": 768
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 21974.921125001856,
+        "indexing_time_ms": 802.1831670048414,
+        "total_time_ms": 22777.104292006698,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 34.980824796366505,
+        "avg_vector_search_time_ms": 1.02880839840509,
+        "avg_total_retrieval_time_ms": 36.009633194771595,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.662,
+          "avg_answer_completeness": 0.458,
+          "avg_faithfulness": 0.86,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 5189.0707500017015,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.85,
+          "avg_answer_completeness": 0.742,
+          "avg_faithfulness": 0.9279999999999999,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 34566.04654180119,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.7220000000000001,
+          "avg_answer_completeness": 0.522,
+          "avg_faithfulness": 0.89,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 12839.608916800353,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.766,
+          "avg_answer_completeness": 0.65,
+          "avg_faithfulness": 0.726,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 13280.032366400701,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.86,
+          "avg_answer_completeness": 0.76,
+          "avg_faithfulness": 0.86,
+          "avg_overall_quality": 0.828,
+          "avg_evaluation_time_ms": 18831.169325200608,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.86,
+          "avg_answer_completeness": 0.77,
+          "avg_faithfulness": 0.8800000000000001,
+          "avg_overall_quality": 0.836,
+          "avg_evaluation_time_ms": 8404.60328340123,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.8300000000000001,
+          "avg_answer_completeness": 0.73,
+          "avg_faithfulness": 0.96,
+          "avg_overall_quality": 0.786,
+          "avg_evaluation_time_ms": 8946.748183196178,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.74,
+          "avg_answer_completeness": 0.5599999999999999,
+          "avg_faithfulness": 0.79,
+          "avg_overall_quality": 0.6900000000000001,
+          "avg_evaluation_time_ms": 8849.212741397787,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.86,
+          "avg_answer_completeness": 0.74,
+          "avg_faithfulness": 1.0,
+          "avg_overall_quality": 0.8099999999999999,
+          "avg_evaluation_time_ms": 13029.055858196807,
+          "total_queries_evaluated": 5
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.63,
+              "answer_completeness": 0.38,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 4047.7622500038706,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.96,
+              "answer_completeness": 0.88,
+              "faithfulness": 0.98,
+              "evaluation_time_ms": 39126.08079200436,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.95,
+              "rationale": "The retrieved excerpts (from an AI textbook) directly discuss the definition of rational agents, the difference between rationality and perfection, and the relationship between rationality and skills associated with intelligence (learning, knowledge representation, information gathering). This makes them highly relevant. They provide solid grounding to argue that rationality is defined relative to objectives and percepts and that perfect rationality is often infeasible, and they give examples (beetle, sphex) illustrating limitations. However, the passages do not state an explicit, standalone verdict on whether a perfectly rational agent is always \"intelligent\" or whether an intelligent agent can be irrational; answering those questions requires synthesis or additional sources (e.g., definitions of intelligence, discussion of objectives/misalignment, and examples of intelligent yet irrational behavior). The content is faithful to the source material.",
+              "evaluation_time_ms": 15720.01225000713,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.68,
+              "faithfulness": 0.82,
+              "evaluation_time_ms": 12946.259417003603,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 21545.284874999197,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 10404.267374993651,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 12182.444374993793,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 7986.749207993853,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 15428.671000001486,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 41.07604100136086,
+            "vector_search_time_ms": 1.507291992311366,
+            "total_retrieval_time_ms": 42.58333299367223,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.58,
+              "answer_completeness": 0.36,
+              "faithfulness": 0.84,
+              "evaluation_time_ms": 4609.715166996466,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.92,
+              "evaluation_time_ms": 21640.66874999844,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.62,
+              "faithfulness": 0.88,
+              "notes": "Retrieved passages are moderately to highly relevant: they describe strengths of symbolic/knowledge-based methods (ILP, first-order/relational representations, use of background knowledge, human-readable hypotheses) and contrast with data-driven black-box models. They do not fully cover all situations where symbolic approaches outperform (e.g., low-data regimes, safety- or correctness-critical domains, strong logical/causal constraints, compositional generalization), so completeness is limited. The content faithfully represents cited claims from the documents.",
+              "evaluation_time_ms": 12185.892916997545,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.72,
+              "answer_completeness": 0.62,
+              "faithfulness": 0.89,
+              "evaluation_time_ms": 14763.847125010216,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 16978.707874994143,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 7479.318625002634,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.88,
+              "evaluation_time_ms": 10028.77616600017,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.95,
+              "overall_quality": 0.85,
+              "evaluation_time_ms": 9545.205040994915,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 12062.534332988434,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 33.35658299329225,
+            "vector_search_time_ms": 0.9038749994942918,
+            "total_retrieval_time_ms": 34.26045799278654,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.83,
+              "answer_completeness": 0.74,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 3585.3687080089003,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.92,
+              "evaluation_time_ms": 30514.971750002587,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.65,
+              "faithfulness": 0.9,
+              "notes": {
+                "context_relevance": "The retrieved passages cite Cox's and de Finetti's arguments that tie coherent uncertain reasoning to probability theory and mention practical issues (priors, need for models, large probability tables, numerical precision). These are directly relevant to the query but only cover part of the theoretical and practical points.",
+                "answer_completeness": "The material provides key supporting points (axiomatic/uniqueness arguments, historical Bayesian development, AI practical problems) but omits several practical limitations and alternative perspectives (e.g., computational intractability at scale, difficulties in eliciting priors, imprecise probability frameworks, handling model misspecification) that would be needed for a fully complete answer.",
+                "faithfulness": "Ratings reflect that the assessments are consistent with the source text: the documents do present Cox/de Finetti/Jaynes arguments and note objections and practical AI-era limitations. No evidence of misrepresentation of the retrieved content."
+              },
+              "evaluation_time_ms": 9938.36633299361,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.86,
+              "answer_completeness": 0.74,
+              "faithfulness": 0.63,
+              "evaluation_time_ms": 12691.327666005236,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 13772.690209007123,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 5591.000375003205,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 6546.013750004931,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.5,
+              "faithfulness": 0.9,
+              "overall_quality": 0.7,
+              "evaluation_time_ms": 10712.642124999547,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 13773.85112499178,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 35.55070799484383,
+            "vector_search_time_ms": 0.9525000059511513,
+            "total_retrieval_time_ms": 36.503208000794984,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.45,
+              "answer_completeness": 0.25,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 3468.776166002499,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.66,
+              "answer_completeness": 0.36,
+              "faithfulness": 0.84,
+              "evaluation_time_ms": 37108.47937500512,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.5,
+              "context_relevance_reason": "The retrieved passages are from a planning/search textbook and describe search algorithms, local search, and heuristics for planning\u2014directly relevant to the 'planning and search' half of the query but they barely address learning-from-data or criteria for choosing between planning and learning.",
+              "answer_completeness": 0.3,
+              "answer_completeness_reason": "The documents provide useful material on when and how to perform search and on deriving heuristics (useful for combining model-based planning with heuristic guidance), but they do not discuss data-driven learning methods, conditions favoring learning vs planning, or concrete hybrid strategies (e.g., model learning, learned heuristics, policy learning combined with planning), so they are incomplete for the full query.",
+              "faithfulness": 0.9,
+              "faithfulness_reason": "The excerpts accurately represent standard planning/search concepts (search in known vs unknown environments, local search, relaxed-problem heuristics). There is no sign of distortion in the retrieved text relevant to planning; the high score reflects faithful, canonical material for the portions they cover.",
+              "evaluation_time_ms": 14498.744416996487,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.63,
+              "faithfulness": 0.66,
+              "evaluation_time_ms": 13928.386082989164,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.4,
+              "overall_quality": 0.4,
+              "evaluation_time_ms": 26128.38350000675,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.4,
+              "overall_quality": 0.4,
+              "evaluation_time_ms": 10430.254292004975,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.8,
+              "overall_quality": 0.3,
+              "evaluation_time_ms": 8597.410666989163,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.2,
+              "answer_completeness": 0.1,
+              "faithfulness": 0.1,
+              "overall_quality": 0.1,
+              "evaluation_time_ms": 6175.553416993353,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.2,
+              "faithfulness": 1.0,
+              "overall_quality": 0.3,
+              "evaluation_time_ms": 12260.19112499489,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 38.06387499207631,
+            "vector_search_time_ms": 0.8812089945422485,
+            "total_retrieval_time_ms": 38.945083986618556,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.56,
+              "faithfulness": 0.76,
+              "rationale": {
+                "context_relevance": "Documents 1 and 2 directly discuss the rational-agent/standard-model framing (maximize expected outcome via an objective/performance measure) and explicitly note the key limitation for real-world deployment: objectives are hard to fully specify and can lead to perverse outcomes (e.g., King Midas/specification gaming). Document 3 is broadly about AI ethics/safety but is less directly tied to the rational-agent/value-alignment critique.",
+                "answer_completeness": "The context supports the core 'what is missing' point (a fully specified, correct objective; difficulties in formalizing human values; pitfalls of consequentialist performance measures), but it does not cover many elements needed for a complete alignment/ethics answer: how to learn/infer values, handle normative uncertainty, multi-stakeholder/social choice issues, constraints/rights-based ethics, corrigibility/oversight, robustness and distribution shift, or institutional/governance components.",
+                "faithfulness": "An answer claiming the rational-agent framework alone is insufficient because it presumes a fully specified objective and can be gamed would be well supported by Documents 1\u20132. However, stronger claims about specific alignment techniques or broader ethical theories would not be grounded in the provided excerpts, limiting how fully one can answer while remaining faithful."
+              },
+              "evaluation_time_ms": 10233.731458996772,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "answer": "No. The rational\u2011agent framework assumes a designer\u2011provided, fully specified performance measure and evaluates behavior by its consequences. In advanced, real\u2011world settings, correctly and completely specifying that objective is difficult, which can yield unintended behavior (e.g., reward hacking/\u201cKing Midas\u201d outcomes) and fails to capture contested ethical trade\u2011offs. What\u2019s missing are: a reliable way to ensure the purpose put into the machine matches what we actually desire; performance measures that reflect desired environmental outcomes rather than proxy behaviors and that handle deep value trade\u2011offs; and mechanisms to cope with incomplete or incorrect objectives instead of assuming a fully specified one (all while recognizing limits of computational rationality).",
+              "context_relevance": 0.86,
+              "answer_completeness": 0.84,
+              "faithfulness": 0.98,
+              "evaluation_time_ms": 44440.03204199544,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.68,
+              "answer_completeness": 0.34,
+              "faithfulness": 0.82,
+              "commentary": "The retrieved passages (from an AI textbook) are moderately relevant: they explicitly discuss the rational-agent/standard-model, the difficulty of fully specifying objectives, performance measures, and the King Midas/reward-hacking type problems, and include a chapter on philosophy/ethics. However, they do not fully address the modern, practical scope of value alignment: missing are discussions of inner vs outer alignment, corrigibility, specification gaming examples beyond simple toy cases, learning human values from preference data, robustness under distributional shift, multi-agent interactions, interpretability, verification, and governance/regulatory mechanisms. The excerpts faithfully represent the textbook's points but are incomplete for answering whether the rational-agent framework can adequately handle ethical behavior and what concrete additions or research directions are required.",
+              "evaluation_time_ms": 11855.02866700699,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.69,
+              "answer_completeness": 0.58,
+              "faithfulness": 0.63,
+              "evaluation_time_ms": 12070.341540995287,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 15730.780166995828,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 8118.175750001683,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 7379.095957992831,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.7,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 9825.913916007266,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 11620.031708007446,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 26.856917000259273,
+            "vector_search_time_ms": 0.8991659997263923,
+            "total_retrieval_time_ms": 27.756082999985665,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "all-mpnet-base-v2",
+        "embedding_dimension": 768,
+        "vector_db": "ChromaDB",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 768,
+          "metric": "cosine"
+        }
+      }
+    },
+    {
+      "configuration": {
+        "embedding_model": "all-mpnet-base-v2",
+        "vector_database": "Weaviate",
+        "embedding_dimension": 768
+      },
+      "indexing_metrics": {
+        "embedding_time_ms": 22169.633750003413,
+        "indexing_time_ms": 1.2076660059392452,
+        "total_time_ms": 22170.841416009353,
+        "document_count": 1166
+      },
+      "retrieval_metrics": {
+        "avg_query_embedding_time_ms": 6.705266595236026,
+        "avg_vector_search_time_ms": 15.5143914045766,
+        "avg_total_retrieval_time_ms": 22.219657999812625,
+        "total_queries": 5
+      },
+      "llm_evaluation_scores": {
+        "OpenAI-gpt-5.2": {
+          "avg_context_relevance": 0.674,
+          "avg_answer_completeness": 0.504,
+          "avg_faithfulness": 0.79,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 5556.6399334027665,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5": {
+          "avg_context_relevance": 0.858,
+          "avg_answer_completeness": 0.7,
+          "avg_faithfulness": 0.958,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 36280.507625002065,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5-mini": {
+          "avg_context_relevance": 0.8560000000000001,
+          "avg_answer_completeness": 0.62,
+          "avg_faithfulness": 0.876,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 21250.048591798986,
+          "total_queries_evaluated": 5
+        },
+        "OpenAI-gpt-5-nano": {
+          "avg_context_relevance": 0.776,
+          "avg_answer_completeness": 0.606,
+          "avg_faithfulness": 0.828,
+          "avg_overall_quality": 0.0,
+          "avg_evaluation_time_ms": 11288.524049796979,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-3-pro-preview": {
+          "avg_context_relevance": 0.85,
+          "avg_answer_completeness": 0.74,
+          "avg_faithfulness": 0.8400000000000001,
+          "avg_overall_quality": 0.808,
+          "avg_evaluation_time_ms": 17075.752783598728,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-3-flash-preview": {
+          "avg_context_relevance": 0.8699999999999999,
+          "avg_answer_completeness": 0.75,
+          "avg_faithfulness": 0.86,
+          "avg_overall_quality": 0.826,
+          "avg_evaluation_time_ms": 7460.560616804287,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-flash": {
+          "avg_context_relevance": 0.8400000000000001,
+          "avg_answer_completeness": 0.76,
+          "avg_faithfulness": 0.97,
+          "avg_overall_quality": 0.8099999999999999,
+          "avg_evaluation_time_ms": 9102.59633359965,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-flash-lite": {
+          "avg_context_relevance": 0.5,
+          "avg_answer_completeness": 0.38,
+          "avg_faithfulness": 0.58,
+          "avg_overall_quality": 0.45999999999999996,
+          "avg_evaluation_time_ms": 7719.23399179941,
+          "total_queries_evaluated": 5
+        },
+        "Gemini-gemini-2.5-pro": {
+          "avg_context_relevance": 0.8800000000000001,
+          "avg_answer_completeness": 0.73,
+          "avg_faithfulness": 0.9800000000000001,
+          "avg_overall_quality": 0.82,
+          "avg_evaluation_time_ms": 14729.399225200177,
+          "total_queries_evaluated": 5
+        }
+      },
+      "detailed_query_results": [
+        {
+          "query": "Is a perfectly rational agent always intelligent, and can an intelligent agent be irrational?",
+          "query_id": "q_1",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.78,
+              "answer_completeness": 0.48,
+              "faithfulness": 0.64,
+              "evaluation_time_ms": 6672.552042000461,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.92,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.98,
+              "rationale": "The retrieved passages define rational agents, link rationality to intelligence, distinguish rationality from perfection, and discuss limited rationality. This is highly relevant to whether perfect rationality implies intelligence and whether intelligent agents can act irrationally. However, the texts do not explicitly state the bidirectional relationship (e.g., that an intelligent agent cannot be irrational) and only implicitly support conclusions via the rational-agent framework, so completeness is moderate-high. The content is authoritative and internally consistent, supporting a faithful answer.",
+              "evaluation_time_ms": 60312.053542002104,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.85,
+              "comment": "The retrieved excerpts (from Russell & Norvig) directly discuss the concept of rational agents, how rationality differs from perfection, and the link between rationality and intelligence (using rationality to define/design intelligent agents). They include illustrative examples (reflexes, sphex wasp) and notes on limited/perfect rationality, so relevance is high. The context supports answering that perfect rationality need not equate to human-like intelligence in all respects and that agents deemed intelligent can act irrationally under some definitions, but it does not present a single explicit, compact answer to the two questions, so completeness is moderate. Faithfulness is high because the conclusions one would draw from these excerpts are directly supported by the text.",
+              "evaluation_time_ms": 28261.4589589939,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.93,
+              "answer_completeness": 0.7,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 15769.621291008662,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 18060.148250006023,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 9987.085917004151,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.95,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 10256.14716700511,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}",
+              "context_relevance": 0.0,
+              "answer_completeness": 0.0,
+              "faithfulness": 0.0,
+              "overall_quality": 0.0,
+              "model": "gemini-2.5-flash-lite",
+              "evaluation_time_ms": 0.0
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 17714.35658399423,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 7.457374988007359,
+            "vector_search_time_ms": 17.375333001837134,
+            "total_retrieval_time_ms": 24.832707989844494,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "In what situations do symbolic (knowledge-based) approaches outperform purely data-driven learning systems, and why?",
+          "query_id": "q_2",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.56,
+              "answer_completeness": 0.44,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 5447.397625001031,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.66,
+              "faithfulness": 0.95,
+              "justification": [
+                "Document 2 directly addresses when symbolic/knowledge-based methods (ILP) excel: in relational/structured domains where attribute-based learning struggles, and when human-readable, scrutinizable hypotheses are needed.",
+                "Document 3 supports the role of prior knowledge and syntactic restrictions (determinations) in improving learning speed and performance, explaining why symbolic approaches can outperform purely data-driven ones.",
+                "Document 1 provides historical context on symbolic vs. connectionist approaches but focuses more on limitations of expert systems, offering less direct guidance on outperforming scenarios; some common cases (e.g., data scarcity, safety-critical constraints) are not explicitly covered."
+              ],
+              "evaluation_time_ms": 24268.988249998074,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.95,
+              "notes": "Retrieved passages directly address when symbolic approaches excel: use of background knowledge, first-order/relational representations (ILP) for structure that cannot be captured by flat attributes, interpretability and participation in scientific hypothesis cycles, and brittleness of pure expert systems vs probabilistic methods. Coverage is relevant but not exhaustive (missing some modern examples such as safety-critical rule enforcement, causal reasoning, low-data transfer with symbolic priors). Claims align with the source text.",
+              "evaluation_time_ms": 29614.843375005876,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.75,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.85,
+              "evaluation_time_ms": 12414.104332987336,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "overall_quality": 0.92,
+              "evaluation_time_ms": 20425.521541998023,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 6892.72954199987,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.8,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.8,
+              "evaluation_time_ms": 13793.432332997327,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.9,
+              "overall_quality": 0.7,
+              "evaluation_time_ms": 14019.596250000177,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 14139.298499998404,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 6.694791998597793,
+            "vector_search_time_ms": 14.724333013873547,
+            "total_retrieval_time_ms": 21.41912501247134,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Why is probability theory considered the only coherent framework for reasoning under uncertainty, and what are its practical limitations?",
+          "query_id": "q_3",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.74,
+              "faithfulness": 0.9,
+              "evaluation_time_ms": 2670.1992500020424,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 0.95,
+              "evaluation_time_ms": 32963.492583003244,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.8,
+              "faithfulness": 0.95,
+              "evaluation_time_ms": 14736.587499995949,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.82,
+              "answer_completeness": 0.58,
+              "faithfulness": 0.75,
+              "evaluation_time_ms": 10144.784457996138,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 0.9,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 11417.233125001076,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 5579.316542003653,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 6765.103208992514,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.65,
+              "faithfulness": 0.95,
+              "overall_quality": 0.75,
+              "evaluation_time_ms": 7372.62437499885,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.9,
+              "answer_completeness": 0.8,
+              "faithfulness": 1.0,
+              "overall_quality": 0.9,
+              "evaluation_time_ms": 11667.015833008918,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 5.957750006928109,
+            "vector_search_time_ms": 14.705542009323835,
+            "total_retrieval_time_ms": 20.663292016251944,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "When should an AI agent rely more on planning and search rather than learning from data, and how can the two be effectively combined?",
+          "query_id": "q_4",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.45,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.6,
+              "evaluation_time_ms": 3886.801167012891,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.62,
+              "answer_completeness": 0.38,
+              "faithfulness": 0.95,
+              "rationale": {
+                "context_relevance": "The retrieved passages are solidly about planning/search (problem-solving agents, complex environments, planning heuristics). However, they barely address learning from data or explicit methods for combining learning with planning, which is central to the query.",
+                "answer_completeness": "The context supports explaining when to use planning/search (need to plan ahead, partial observability, nondeterminism, optimization via local search, heuristic-guided planning). It offers little on when to favor data-driven learning or concrete integration strategies beyond relaxed-problem heuristics and online search, so a full answer would be difficult.",
+                "faithfulness": "The content is accurate, canonical (AIMA), and consistent with standard AI planning knowledge. Any answer grounded strictly in these excerpts would be factually supported, though limited in scope."
+              },
+              "evaluation_time_ms": 24990.57733301015,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.6,
+              "context_relevance_comment": "The retrieved excerpts are directly about search and planning (local search, problem-solving agents, heuristics for planning), so they are relevant to the 'planning and search' half of the query. They contain little material about learning-from-data or how to combine learning and planning, so overall relevance to the full query is moderate.",
+              "answer_completeness": 0.25,
+              "answer_completeness_comment": "The documents cover fundamentals of search and heuristic planning but do not address the tradeoffs that determine when to prefer planning vs learning (e.g., model availability, sample efficiency, environment stationarity, computation vs data constraints) nor modern integration strategies (e.g., learning models for model-based RL, hybrid model-free/model-based systems, planning with learned heuristics). Thus they are insufficient to produce a complete answer to the query.",
+              "faithfulness": 0.85,
+              "faithfulness_comment": "The excerpts appear faithfully quoted and accurately represent standard textbook material on search and planning heuristics. There is no indication of misrepresentation or contradictory claims within the retrieved passages. The limitation is coverage rather than fidelity.",
+              "evaluation_time_ms": 17103.167791996384,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.76,
+              "answer_completeness": 0.58,
+              "faithfulness": 0.84,
+              "evaluation_time_ms": 8910.06829199614,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.4,
+              "overall_quality": 0.35,
+              "evaluation_time_ms": 21496.620666992385,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.5,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.3,
+              "overall_quality": 0.35,
+              "evaluation_time_ms": 8545.073083005263,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.3,
+              "faithfulness": 0.9,
+              "overall_quality": 0.5,
+              "evaluation_time_ms": 7432.03758400341,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.2,
+              "answer_completeness": 0.05,
+              "faithfulness": 0.1,
+              "overall_quality": 0.1,
+              "evaluation_time_ms": 9832.914625003468,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 0.6,
+              "answer_completeness": 0.2,
+              "faithfulness": 0.9,
+              "overall_quality": 0.4,
+              "evaluation_time_ms": 17930.259708999074,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 6.566915995790623,
+            "vector_search_time_ms": 15.651665991754271,
+            "total_retrieval_time_ms": 22.218581987544894,
+            "results_count": 3
+          }
+        },
+        {
+          "query": "Can the rational-agent framework adequately address ethical behavior and value alignment in advanced AI systems? If not, what is missing?",
+          "query_id": "q_5",
+          "evaluations": {
+            "OpenAI-gpt-5.2": {
+              "context_relevance": 0.76,
+              "answer_completeness": 0.56,
+              "faithfulness": 0.91,
+              "notes": {
+                "context_relevance": "Docs 1\u20132 directly describe the rational-agent/standard-model view (maximize expected outcome given an objective/performance measure) and explicitly flag the key alignment problem: real-world objectives are hard to fully specify and can be mis-specified (e.g., King Midas/perverse instantiation). Doc 3 is broader AI ethics/safety background but contributes less directly to the rational-agent framework question.",
+                "answer_completeness": "The retrieved context supports a strong 'not fully adequate' argument (ethical behavior depends on the objective; specifying the true human objective is difficult; consequentialist performance measures can be gamed). However, it provides limited detail on what concretely is missing beyond 'fully specified objective'\u2014e.g., mechanisms for learning/representing human values, handling normative uncertainty, constraints/rights-based ethics, corrigibility/oversight, and governance are not developed in the excerpts.",
+                "faithfulness": "An answer stating that the rational-agent framework alone cannot guarantee ethical/value-aligned behavior because it presumes a correct, fully specified objective and is vulnerable to mis-specified performance measures would be well-supported by Docs 1\u20132. Avoiding claims about specific missing techniques not mentioned would keep the response highly faithful."
+              },
+              "evaluation_time_ms": 9106.249582997407,
+              "model": "gpt-5.2"
+            },
+            "OpenAI-gpt-5": {
+              "context_relevance": 0.92,
+              "answer_completeness": 0.78,
+              "faithfulness": 0.96,
+              "rationale": "The passages directly address the rational-agent framework, performance measures, consequentialism, and explicitly note that the standard model is likely insufficient long-term because real-world objectives cannot be fully specified, leading to mis-specification (King Midas/specification gaming) and motivating a refinement toward beneficial machines. This supports a high-level answer that the rational-agent framework alone is not adequate for ethical behavior and value alignment. However, the context lacks detailed mechanisms for achieving alignment or handling complex ethical considerations, so it does not enable a fully comprehensive response.",
+              "missing_from_context": [
+                "Concrete methods to learn and update human preferences/values from behavior and feedback, with calibrated uncertainty over objectives",
+                "Corrigibility, safe interruptibility, and ongoing human oversight mechanisms",
+                "Approaches for aggregating diverse stakeholder values and resolving value conflicts",
+                "Treatment of normative uncertainty and inclusion of non-consequentialist constraints (e.g., rights, duties)",
+                "Systematic strategies to prevent or mitigate specification gaming and reward hacking beyond illustrative examples",
+                "Considerations for robustness under distributional shift and long-term safety governance"
+              ],
+              "evaluation_time_ms": 38867.42641699675,
+              "model": "gpt-5"
+            },
+            "OpenAI-gpt-5-mini": {
+              "context_relevance": 0.88,
+              "answer_completeness": 0.45,
+              "faithfulness": 0.78,
+              "notes": "The retrieved passages are highly relevant (they discuss the rational-agent/standard-model, performance measures, and the difficulty of specifying objectives and the King Midas problem), so they support saying the framework is insufficient. They are not complete, however: they do not cover many missing elements needed for alignment (e.g., scalable value learning, corrigibility, uncertainty about human values, robustness to distributional shift, multi-agent dynamics, institutional/governance solutions, interpretability). The documents faithfully back the critique that the standard/rational-agent model has limits but do not provide the full set of remedies.",
+              "evaluation_time_ms": 16534.185333002824,
+              "model": "gpt-5-mini"
+            },
+            "OpenAI-gpt-5-nano": {
+              "context_relevance": 0.62,
+              "answer_completeness": 0.57,
+              "faithfulness": 0.8,
+              "evaluation_time_ms": 9204.04187499662,
+              "model": "gpt-5-nano"
+            },
+            "Gemini-gemini-3-pro-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 13979.240333996131,
+              "model": "gemini-3-pro-preview"
+            },
+            "Gemini-gemini-3-flash-preview": {
+              "context_relevance": 0.95,
+              "answer_completeness": 0.85,
+              "faithfulness": 1.0,
+              "overall_quality": 0.93,
+              "evaluation_time_ms": 6298.5980000084965,
+              "model": "gemini-3-flash-preview"
+            },
+            "Gemini-gemini-2.5-flash": {
+              "context_relevance": 1.0,
+              "answer_completeness": 0.9,
+              "faithfulness": 1.0,
+              "overall_quality": 0.95,
+              "evaluation_time_ms": 7266.261374999885,
+              "model": "gemini-2.5-flash"
+            },
+            "Gemini-gemini-2.5-flash-lite": {
+              "context_relevance": 0.85,
+              "answer_completeness": 0.6,
+              "faithfulness": 0.95,
+              "overall_quality": 0.75,
+              "evaluation_time_ms": 7371.034708994557,
+              "model": "gemini-2.5-flash-lite"
+            },
+            "Gemini-gemini-2.5-pro": {
+              "context_relevance": 1.0,
+              "answer_completeness": 1.0,
+              "faithfulness": 1.0,
+              "overall_quality": 1.0,
+              "evaluation_time_ms": 12196.065500000259,
+              "model": "gemini-2.5-pro"
+            }
+          },
+          "retrieval_metrics": {
+            "query_embedding_time_ms": 6.8494999868562445,
+            "vector_search_time_ms": 15.11508300609421,
+            "total_retrieval_time_ms": 21.964582992950454,
+            "results_count": 3
+          }
+        }
+      ],
+      "system_info": {
+        "embedding_model": "all-mpnet-base-v2",
+        "embedding_dimension": 768,
+        "vector_db": "Weaviate-Fallback",
+        "vector_db_stats": {
+          "document_count": 1166,
+          "dimension": 768,
+          "mode": "fallback_numpy"
+        }
+      }
+    }
+  ],
+  "total_runs": 4,
   "summary": {
-    "configurations_tested": [],
-    "best_overall_quality": null,
-    "fastest_retrieval": null,
-    "fastest_indexing": null
+    "configurations_tested": [
+      "text-embedding-3-large + ChromaDB",
+      "bge-large-en-v1.5 + Weaviate",
+      "all-mpnet-base-v2 + ChromaDB",
+      "all-mpnet-base-v2 + Weaviate"
+    ],
+    "best_overall_quality": {
+      "configuration": "text-embedding-3-large + ChromaDB",
+      "llm": "Gemini-gemini-3-pro-preview",
+      "score": 0.97
+    },
+    "fastest_retrieval": {
+      "configuration": "all-mpnet-base-v2 + Weaviate",
+      "time_ms": 22.219657999812625
+    },
+    "fastest_indexing": {
+      "configuration": "all-mpnet-base-v2 + Weaviate",
+      "time_ms": 22170.841416009353
+    }
   },
-  "llm_analysis": "No results to analyze."
+  "llm_analysis": "Based on the benchmark results, the configuration that performed best overall appears to be **all-mpnet-base-v2 combined with Weaviate**. This combination demonstrates the lowest indexing time (22,170.84 ms) and the fastest average retrieval time (22.22 ms), while also achieving commendable quality scores across various models, particularly the Gemini models. The overall quality ratings for this configuration showed consistent performance, with the Gemini-gemini-3-flash-preview scoring 0.826 and the Gemini-gemini-2.5-pro at 0.820. The balance between speed and quality is critical in production settings, and this configuration offers a compelling option for high throughput with satisfactory output quality.\n\nIn analyzing the trade-offs between speed and quality, the results indicate a clear correlation where faster retrieval times often coincide with lower quality scores, particularly with the **text-embedding-3-large + ChromaDB** configuration. Although it had a decent average retrieval time of 316.39 ms, it yielded lower quality scores across all models, highlighting that faster response times do not always equate to better relevance or accuracy in results. Conversely, the **bge-large-en-v1.5 + Weaviate** configuration, while slower in indexing (83,778.49 ms) and retrieval (35.90 ms), produced better quality scores for the Gemini models, suggesting that the quality of embeddings can significantly influence the perceived effectiveness of the retrieval mechanism.\n\nFor production use, I would recommend the **all-mpnet-base-v2 + Weaviate** combination based on its superior performance in terms of speed and quality. This configuration not only provides the fastest retrieval times but also achieves a competitive quality score across multiple models, making it suitable for applications requiring both efficiency and relevance in responses. It represents a balanced approach that can handle a high load while delivering satisfactory results.\n\nInterestingly, the performance of OpenAI's GPT models was surprisingly low across all configurations, with an overall quality score of 0.000. This suggests that these models may not be well-suited for the specific tasks or datasets used in the benchmarks. In contrast, the Gemini models consistently outperformed the GPT variants, especially in configurations using Weaviate. This trend raises questions about the suitability of GPT models for embedding tasks in certain contexts, indicating that alternative models like Gemini may offer more reliable results in practical applications."
 }
